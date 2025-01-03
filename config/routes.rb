@@ -4,20 +4,26 @@ Rails.application.routes.draw do
   # API routes
   namespace :api do
     resources :research_projects, only: [:index, :show, :create, :update, :destroy] do
-      resources :metrics, only: [:index]
+      resources :metrics, only: [:index, :create]
 
       # Export route
       post 'export', to: 'exports#create'
+      get :exports, to: 'exports#create', on: :member
 
       # Favorite routes
       post 'favorite', to: 'favorites#create'
       delete 'favorite', to: 'favorites#destroy'
     end
 
-    resources :metrics, only: [:show, :create, :update, :destroy]
+    # Metrics with nested notes
+    resources :metrics, only: [:show, :create, :update, :destroy] do
+      resources :notes, only: [:index], controller: 'notes'
+    end
+
     resources :notes, only: [:create, :update, :destroy]
 
     # Get user's favorites
+    resources :favorites, only: [:index]
     get 'favorites', to: 'research_projects#favorites'
   end
 
