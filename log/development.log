@@ -256,3 +256,20 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 13ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 2677)
 
 
+Started GET "/" for 127.0.0.1 at 2025-03-30 13:40:23 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+Redirected to http://127.0.0.1:3000/users/sign_in
+Completed 302 Found in 41ms (ActiveRecord: 0.0ms | Allocations: 3013)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-03-30 13:40:23 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 620)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 13.1ms | Allocations: 4461)
+  Rendered layout layouts/application.html.erb (Duration: 1022.2ms | Allocations: 121031)
+Completed 200 OK in 1100ms (Views: 1036.3ms | ActiveRecord: 31.2ms | Allocations: 136875)
+
+

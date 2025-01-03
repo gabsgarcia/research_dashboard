@@ -24,6 +24,12 @@ class ResearchProject < ApplicationRecord
   # It filters projects by the specified category, but only if a category was provided
   scope :by_category, ->(category) { where(category: category) if category.present? }
 
+  # Calculate duration in days
+  def duration_days
+    return nil if start_date.nil? || end_date.nil?
+    (end_date - start_date).to_i
+  end
+
   private
 
   def end_date_after_start_date
