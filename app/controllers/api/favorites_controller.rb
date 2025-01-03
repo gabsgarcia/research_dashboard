@@ -2,6 +2,12 @@ class Api::FavoritesController < ApplicationController
   # Ensures only logged-in users can favorite projects
   before_action :authenticate_user!
 
+  def index
+    # Get all favorites for the current user
+    favorites = current_user.favorites
+    render json: favorites
+  end
+
   def create
     # Create a favorite associated with the current user
     favorite = current_user.favorites.build(research_project_id: params[:research_project_id])
