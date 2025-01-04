@@ -1,21 +1,27 @@
-import React from 'react';
+import React from "react";
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <nav className="navbar">
-      <div className="nav-brand">
-        <Link to="/">Research Dashboard</Link>
-      </div>
-      <div className="nav-links">
-        <Link to="/" className="nav-link">Dashboard</Link>
-        {/* Add more navigation links as needed */}
-      </div>
-      <div className="nav-auth">
-        {/* This assumes you have a current_user in your rails app */}
-        <a href="/users/sign_out" data-method="delete" className="logout-button">
-          Logout
-        </a>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container">
+        <Link className="navbar-brand fw-bold" to="/">Research Dashboard</Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">Projects</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/metrics">Metrics</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/favorites">Favorites</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );

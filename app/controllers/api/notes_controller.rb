@@ -4,6 +4,12 @@ class Api::NotesController < ApplicationController
   # Sets up the @note variable for update and destroy actions
   before_action :set_note, only: [:update, :destroy]
 
+  def index
+    metric = Metric.find(params[:metric_id])
+    notes = metric.notes
+    render json: notes
+  end
+
   def create
     # Creates a note associated with the current user
     note = current_user.notes.build(note_params)

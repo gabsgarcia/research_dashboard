@@ -21,7 +21,6 @@ class User < ApplicationRecord
   # Set default role for new users
   before_validation :set_default_role, on: :create
 
-
   # Helper methods for role checking
   def researcher?
     role == 'researcher'

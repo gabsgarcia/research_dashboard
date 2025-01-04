@@ -7,13 +7,13 @@ class Api::ResearchProjectsController < ApplicationController
   def index
     # For admins, show all projects
     # For researchers, show only their projects
-    projects = if current_user.role == "admin"
+    projects = if current_user.admin?
                 ResearchProject.all
               else
                 current_user.research_projects
               end
 
-  # Converts the projects to JSON and sends them to the frontend
+    # Converts the projects to JSON and sends them to the frontend
     render json: projects
   end
 
@@ -56,7 +56,7 @@ class Api::ResearchProjectsController < ApplicationController
 
   def set_research_project
     # Allow admins to access any project, but researchers only their own
-    @research_project = if current_user.role == "admin"
+    @research_project = if current_user.admin?
                           ResearchProject.find(params[:id])
                         else
                           current_user.research_projects.find(params[:id])
