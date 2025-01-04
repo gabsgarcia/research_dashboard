@@ -122,21 +122,3 @@ export const exportProjectCSV = async (projectId) => {
     return handleError(error);
   }
 };
-
-// For favorites toggle
-export const toggleFavorite = async (projectId) => {
-  try {
-    const favorites = await fetchFavorites();
-    const isFavorited = favorites.some(fav => fav.research_project_id === parseInt(projectId));
-
-    if (isFavorited) {
-      await axios.delete(`${API_URL}/research_projects/${projectId}/favorite`);
-      return { success: true, message: "Project removed from favorites" };
-    } else {
-      const response = await axios.post(`${API_URL}/research_projects/${projectId}/favorite`);
-      return response.data;
-    }
-  } catch (error) {
-    return handleError(error);
-  }
-};

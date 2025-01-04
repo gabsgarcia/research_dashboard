@@ -1,23 +1,40 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from './Dashboard';
-import ProjectDetails from './ProjectDetails';
-import NavBar from './NavBar';
+// app/javascript/components/App.jsx
+import React, { useState, useEffect } from "react";
+import NavBar from "./NavBar";
+import Dashboard from "./Dashboard";
 
 const App = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/research_projects')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => {
+        setProjects(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching projects:', error);
+        setError('Failed to load projects');
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
-    <Router>
-      <div className="app-container">
-        <NavBar />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/projects/:id" element={<ProjectDetails />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+    <div className="app-container">
+      <NavBar />
+      <main className="main-content">
+        <Dashboard projects={projects} />
+      </main>
+    </div>
   );
 };
 
