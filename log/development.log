@@ -1335,3 +1335,100 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 135ms (Views: 113.0ms | ActiveRecord: 4.3ms | Allocations: 48042)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2025-03-30 19:29:43 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 182)
+  Rendered layout layouts/application.html.erb (Duration: 2378.9ms | Allocations: 54090)
+Completed 500 Internal Server Error in 2463ms (ActiveRecord: 13.3ms | Allocations: 76133)
+
+
+  
+ActionView::Template::Error (SyntaxError: unknown: Unexpected token (24:29)
+  22 | 
+  23 |       <p className="project-description">
+> 24 |         {project.description?.length > 100
+     |                              ^
+  25 |           ? `${project.description.substring(0, 100)}...`
+  26 |           : project.description}
+  27 |       </p>):
+  
+Started GET "/" for 127.0.0.1 at 2025-03-30 19:33:30 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 182)
+  Rendered layout layouts/application.html.erb (Duration: 1041.6ms | Allocations: 48259)
+Completed 500 Internal Server Error in 1119ms (ActiveRecord: 13.9ms | Allocations: 70303)
+
+
+  
+ActionView::Template::Error (SyntaxError: unknown: Unexpected token (117:15)
+  115 |           <div className="metric-content">
+  116 |             {selectedMetricName ? (
+> 117 |               <>
+      |                ^
+  118 |                 <div className="metric-header">
+  119 |                   <h2>{selectedMetricName}</h2>
+  120 |                   {sampleMetric && ():
+  
+Started GET "/" for 127.0.0.1 at 2025-03-30 19:46:26 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 195)
+  Rendered layout layouts/application.html.erb (Duration: 673.4ms | Allocations: 35240)
+Completed 500 Internal Server Error in 763ms (ActiveRecord: 13.9ms | Allocations: 57284)
+
+
+  
+ActionView::Template::Error (SyntaxError: unknown: Unexpected token (117:15)
+  115 |           <div className="metric-content">
+  116 |             {selectedMetricName ? (
+> 117 |               <>
+      |                ^
+  118 |                 <div className="metric-header">
+  119 |                   <h2>{selectedMetricName}</h2>
+  120 |                   {sampleMetric && ():
+  
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2025-03-30 20:35:20 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 195)
+  Rendered layout layouts/application.html.erb (Duration: 544.0ms | Allocations: 102427)
+Completed 500 Internal Server Error in 645ms (ActiveRecord: 14.9ms | Allocations: 124219)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x0000000000e038>
+
+    '.freeze; @output_buffer.append=( javascript_pack_tag 'index', 'data-turbolinks-track': 'reload' ); @output_buffer.safe_append='
+                                      ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'index', 'data-turbolinks-track': 'reload' %>
+    11:     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    12:   </head>
+    13: 
+  
+app/views/layouts/application.html.erb:10
