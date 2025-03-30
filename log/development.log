@@ -238,3 +238,1100 @@ FOREIGN KEY ("metric_id")
   [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(6441941217962164425)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2025-03-30 10:24:23 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant HomeController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/" for 127.0.0.1 at 2025-03-30 10:25:26 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gabsgarcia/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gabsgarcia/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.4ms | Allocations: 294)
+Completed 200 OK in 13ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 2677)
+
+
+Started GET "/" for 127.0.0.1 at 2025-03-30 13:40:23 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+Redirected to http://127.0.0.1:3000/users/sign_in
+Completed 302 Found in 41ms (ActiveRecord: 0.0ms | Allocations: 3013)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-03-30 13:40:23 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 620)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 13.1ms | Allocations: 4461)
+  Rendered layout layouts/application.html.erb (Duration: 1022.2ms | Allocations: 121031)
+Completed 200 OK in 1100ms (Views: 1036.3ms | ActiveRecord: 31.2ms | Allocations: 136875)
+
+
+  [1m[36mMetric Load (6.2ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mMetric Load (0.7ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics"[0m
+  [1m[36mResearchProject Load (21.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (8.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Admin User"], ["role", "admin"], ["created_at", "2025-03-30 16:47:11.266780"], ["updated_at", "2025-03-30 16:47:11.266780"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "climate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Climate Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 16:47:11.632220"], ["updated_at", "2025-03-30 16:47:11.632220"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "energy@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "energy@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Energy Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 16:47:11.970659"], ["updated_at", "2025-03-30 16:47:11.970659"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (14.2ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Climate Change Study"], ["description", "Analysis of temperature changes in coastal regions"], ["category", "Environmental Science"], ["start_date", "2024-10-01"], ["end_date", "2025-06-28"], ["status", "active"], ["user_id", 2], ["created_at", "2025-03-30 16:47:12.043658"], ["updated_at", "2025-03-30 16:47:12.043658"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (2.3ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Solar Panel Efficiency"], ["description", "Comparing efficiency of different solar panel types"], ["category", "Renewable Energy"], ["start_date", "2024-11-30"], ["end_date", "2025-05-29"], ["status", "active"], ["user_id", 3], ["created_at", "2025-03-30 16:47:12.065074"], ["updated_at", "2025-03-30 16:47:12.065074"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (2.5ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Vaccine Effectiveness"], ["description", "Tracking long-term effectiveness of vaccines"], ["category", "Medical Research"], ["start_date", "2024-03-30"], ["end_date", "2025-02-28"], ["status", "completed"], ["user_id", 1], ["created_at", "2025-03-30 16:47:12.072657"], ["updated_at", "2025-03-30 16:47:12.072657"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mMetric Load (0.7ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics"[0m
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 1]]
+  [1m[36mFavorite Load (7.1ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 1]]
+  [1m[36mResearchProject Destroy (0.8ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 2]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 2]]
+  [1m[36mResearchProject Destroy (0.6ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 3]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 3]]
+  [1m[36mResearchProject Destroy (0.7ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mNote Load (2.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Destroy (0.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mUser Destroy (1.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Admin User"], ["role", "admin"], ["created_at", "2025-03-30 17:39:14.585422"], ["updated_at", "2025-03-30 17:39:14.585422"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "climate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Climate Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 17:39:14.894449"], ["updated_at", "2025-03-30 17:39:14.894449"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "energy@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "energy@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Energy Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 17:39:15.197955"], ["updated_at", "2025-03-30 17:39:15.197955"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (2.2ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Climate Change Study"], ["description", "Analysis of temperature changes in coastal regions"], ["category", "Environmental Science"], ["start_date", "2024-10-01"], ["end_date", "2025-06-28"], ["status", "active"], ["user_id", 5], ["created_at", "2025-03-30 17:39:15.211214"], ["updated_at", "2025-03-30 17:39:15.211214"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (1.9ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Solar Panel Efficiency"], ["description", "Comparing efficiency of different solar panel types"], ["category", "Renewable Energy"], ["start_date", "2024-11-30"], ["end_date", "2025-05-29"], ["status", "active"], ["user_id", 6], ["created_at", "2025-03-30 17:39:15.219710"], ["updated_at", "2025-03-30 17:39:15.219710"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (1.9ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Vaccine Effectiveness"], ["description", "Tracking long-term effectiveness of vaccines"], ["category", "Medical Research"], ["start_date", "2024-03-30"], ["end_date", "2025-02-28"], ["status", "completed"], ["user_id", 4], ["created_at", "2025-03-30 17:39:15.228713"], ["updated_at", "2025-03-30 17:39:15.228713"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mMetric Load (0.7ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics"[0m
+  [1m[36mResearchProject Load (0.7ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 4]]
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 4]]
+  [1m[36mResearchProject Destroy (0.9ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.2ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 5]]
+  [1m[36mFavorite Load (0.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 5]]
+  [1m[36mResearchProject Destroy (0.4ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 5]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 6]]
+  [1m[36mFavorite Load (0.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 6]]
+  [1m[36mResearchProject Destroy (0.4ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 6]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.2ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.2ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[36mFavorite Load (0.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mFavorite Load (0.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Admin User"], ["role", "admin"], ["created_at", "2025-03-30 17:45:25.027551"], ["updated_at", "2025-03-30 17:45:25.027551"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "climate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Climate Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 17:45:25.330097"], ["updated_at", "2025-03-30 17:45:25.330097"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (3.0ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Climate Change Study"], ["description", "Analysis of temperature changes in coastal regions"], ["category", "Environmental Science"], ["start_date", "2024-10-01"], ["end_date", "2025-06-28"], ["status", "active"], ["user_id", 8], ["created_at", "2025-03-30 17:45:25.339645"], ["updated_at", "2025-03-30 17:45:25.339645"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mMetric Load (0.7ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics"[0m
+  [1m[36mResearchProject Load (0.8ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 7]]
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 7]]
+  [1m[36mResearchProject Destroy (0.7ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 7]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Admin User"], ["role", "admin"], ["created_at", "2025-03-30 17:46:15.333094"], ["updated_at", "2025-03-30 17:46:15.333094"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "climate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Climate Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 17:46:15.651075"], ["updated_at", "2025-03-30 17:46:15.651075"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (3.0ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Climate Change Study"], ["description", "Analysis of temperature changes in coastal regions"], ["category", "Environmental Science"], ["start_date", "2024-10-01"], ["end_date", "2025-06-28"], ["status", "active"], ["user_id", 10], ["created_at", "2025-03-30 17:46:15.668562"], ["updated_at", "2025-03-30 17:46:15.668562"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to RenameNotesToDescriptionInMetrics (2025030304628)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('2025030304628') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mMetric Load (0.8ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics"[0m
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 8]]
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 8]]
+  [1m[36mResearchProject Destroy (0.7ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 8]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 9]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 10]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 10]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 10]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Admin User"], ["role", "admin"], ["created_at", "2025-03-30 20:47:43.813067"], ["updated_at", "2025-03-30 20:47:43.813067"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "climate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Climate Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 20:47:44.119407"], ["updated_at", "2025-03-30 20:47:44.119407"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (2.4ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Climate Change Study"], ["description", "Analysis of temperature changes in coastal regions"], ["category", "Environmental Science"], ["start_date", "2024-10-01"], ["end_date", "2025-06-28"], ["status", "active"], ["user_id", 12], ["created_at", "2025-03-30 20:47:44.134138"], ["updated_at", "2025-03-30 20:47:44.134138"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to RenameNotesToDescriptionInMetrics (20250103404628)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250103404628') RETURNING "version"[0m
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RenameNotesToDescriptionInMetrics (20250103404628)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.7ms)[0m  [1m[35mALTER TABLE "metrics" RENAME COLUMN "description" TO "notes"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (5015.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "research_dashboard_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (46.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "research_dashboard_development"[0m
+  [1m[35m (40.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "research_dashboard_test"[0m
+  [1m[35m (404.6ms)[0m  [1m[35mCREATE DATABASE "research_dashboard_development" ENCODING = 'unicode'[0m
+  [1m[35m (165.9ms)[0m  [1m[35mCREATE DATABASE "research_dashboard_test" ENCODING = 'unicode'[0m
+  [1m[35m (19.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (2.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-03-30 20:55:46.617168', '2025-03-30 20:55:46.617185') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20250102120753)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "name" character varying, "role" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250102120753') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateResearchProjects (20250102121009)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "research_projects" ("id" bigserial primary key, "title" character varying, "description" text, "category" character varying, "start_date" date, "end_date" date, "status" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_49e3e9957e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE INDEX "index_research_projects_on_user_id" ON "research_projects" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250102121009') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMetrics (20250102191233)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "metrics" ("id" bigserial primary key, "research_project_id" bigint NOT NULL, "name" character varying, "value" float, "date" date, "notes" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4311555bd5"
+FOREIGN KEY ("research_project_id")
+  REFERENCES "research_projects" ("id")
+)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE INDEX "index_metrics_on_research_project_id" ON "metrics" ("research_project_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250102191233') RETURNING "version"[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFavorites (20250102205058)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" bigserial primary key, "user_id" bigint NOT NULL, "research_project_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d15744e438"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_a15b0b02ef"
+FOREIGN KEY ("research_project_id")
+  REFERENCES "research_projects" ("id")
+)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE INDEX "index_favorites_on_user_id" ON "favorites" ("user_id")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE INDEX "index_favorites_on_research_project_id" ON "favorites" ("research_project_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250102205058') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotes (20250102205111)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "user_id" bigint NOT NULL, "metric_id" bigint NOT NULL, "content" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_7f2323ad43"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_356b2c998d"
+FOREIGN KEY ("metric_id")
+  REFERENCES "metrics" ("id")
+)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE INDEX "index_notes_on_user_id" ON "notes" ("user_id")[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE INDEX "index_notes_on_metric_id" ON "notes" ("metric_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250102205111') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RenameNotesToDescriptionInMetrics (20250103404628)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "metrics" RENAME COLUMN "notes" TO "description"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250103404628') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6441941217962164425)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mMetric Load (0.8ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics"[0m
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Admin User"], ["role", "admin"], ["created_at", "2025-03-30 20:56:16.788640"], ["updated_at", "2025-03-30 20:56:16.788640"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "climate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Climate Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 20:56:17.116734"], ["updated_at", "2025-03-30 20:56:17.116734"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "energy@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "energy@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Energy Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 20:56:17.436479"], ["updated_at", "2025-03-30 20:56:17.436479"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (2.4ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Climate Change Study"], ["description", "Analysis of temperature changes in coastal regions"], ["category", "Environmental Science"], ["start_date", "2024-10-01"], ["end_date", "2025-06-28"], ["status", "active"], ["user_id", 2], ["created_at", "2025-03-30 20:56:17.489192"], ["updated_at", "2025-03-30 20:56:17.489192"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (2.9ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Solar Panel Efficiency"], ["description", "Comparing efficiency of different solar panel types"], ["category", "Renewable Energy"], ["start_date", "2024-11-30"], ["end_date", "2025-05-29"], ["status", "active"], ["user_id", 3], ["created_at", "2025-03-30 20:56:17.498749"], ["updated_at", "2025-03-30 20:56:17.498749"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (1.9ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Vaccine Effectiveness"], ["description", "Tracking long-term effectiveness of vaccines"], ["category", "Medical Research"], ["start_date", "2024-03-30"], ["end_date", "2025-02-28"], ["status", "completed"], ["user_id", 1], ["created_at", "2025-03-30 20:56:17.507577"], ["updated_at", "2025-03-30 20:56:17.507577"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (3.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Average Temperature"], ["value", 23.5], ["date", "2024-10-01"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:56:17.533366"], ["updated_at", "2025-03-30 20:56:17.533366"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Sea Level Rise"], ["value", 2.0], ["date", "2024-10-01"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:56:17.543674"], ["updated_at", "2025-03-30 20:56:17.543674"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Average Temperature"], ["value", 24.0], ["date", "2024-10-31"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:56:17.552867"], ["updated_at", "2025-03-30 20:56:17.552867"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Sea Level Rise"], ["value", 2.3], ["date", "2024-10-31"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:56:17.560751"], ["updated_at", "2025-03-30 20:56:17.560751"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.3ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Average Temperature"], ["value", 24.5], ["date", "2024-11-30"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:56:17.569077"], ["updated_at", "2025-03-30 20:56:17.569077"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.0ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Sea Level Rise"], ["value", 2.6], ["date", "2024-11-30"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:56:17.577526"], ["updated_at", "2025-03-30 20:56:17.577526"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Average Temperature"], ["value", 25.0], ["date", "2024-12-30"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:56:17.586359"], ["updated_at", "2025-03-30 20:56:17.586359"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Sea Level Rise"], ["value", 2.9], ["date", "2024-12-30"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:56:17.593846"], ["updated_at", "2025-03-30 20:56:17.593846"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Average Temperature"], ["value", 25.5], ["date", "2025-01-29"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:56:17.601826"], ["updated_at", "2025-03-30 20:56:17.601826"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Sea Level Rise"], ["value", 3.2], ["date", "2025-01-29"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:56:17.609474"], ["updated_at", "2025-03-30 20:56:17.609474"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.2ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Average Temperature"], ["value", 26.0], ["date", "2025-02-28"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:56:17.616711"], ["updated_at", "2025-03-30 20:56:17.616711"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 1], ["name", "Sea Level Rise"], ["value", 3.5], ["date", "2025-02-28"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:56:17.625122"], ["updated_at", "2025-03-30 20:56:17.625122"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mMetric Load (0.8ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 1]]
+  [1m[36mMetric Destroy (0.7ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 2]]
+  [1m[36mMetric Destroy (0.5ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 3]]
+  [1m[36mMetric Destroy (1.0ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 4]]
+  [1m[36mMetric Destroy (0.7ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 5]]
+  [1m[36mMetric Destroy (0.6ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 5]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 6]]
+  [1m[36mMetric Destroy (0.7ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 6]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 7]]
+  [1m[36mMetric Destroy (0.4ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 7]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 8]]
+  [1m[36mMetric Destroy (0.8ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 8]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 9]]
+  [1m[36mMetric Destroy (0.5ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 9]]
+  [1m[36mTRANSACTION (71.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 10]]
+  [1m[36mMetric Destroy (0.5ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 10]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 11]]
+  [1m[36mMetric Destroy (0.4ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 11]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."metric_id" = $1[0m  [["metric_id", 12]]
+  [1m[36mMetric Destroy (0.6ms)[0m  [1m[31mDELETE FROM "metrics" WHERE "metrics"."id" = $1[0m  [["id", 12]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mResearchProject Load (0.7ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.4ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 1]]
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 1]]
+  [1m[36mResearchProject Destroy (0.7ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 2]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 2]]
+  [1m[36mResearchProject Destroy (0.5ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Load (0.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 3]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."research_project_id" = $1[0m  [["research_project_id", 3]]
+  [1m[36mResearchProject Destroy (0.7ms)[0m  [1m[31mDELETE FROM "research_projects" WHERE "research_projects"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mUser Destroy (1.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Admin User"], ["role", "admin"], ["created_at", "2025-03-30 20:57:48.095343"], ["updated_at", "2025-03-30 20:57:48.095343"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "climate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Climate Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 20:57:48.402959"], ["updated_at", "2025-03-30 20:57:48.402959"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "energy@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "name", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "energy@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["name", "Energy Researcher"], ["role", "researcher"], ["created_at", "2025-03-30 20:57:48.706138"], ["updated_at", "2025-03-30 20:57:48.706138"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (1.9ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Climate Change Study"], ["description", "Analysis of temperature changes in coastal regions"], ["category", "Environmental Science"], ["start_date", "2024-10-01"], ["end_date", "2025-06-28"], ["status", "active"], ["user_id", 5], ["created_at", "2025-03-30 20:57:48.716063"], ["updated_at", "2025-03-30 20:57:48.716063"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (2.9ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Solar Panel Efficiency"], ["description", "Comparing efficiency of different solar panel types"], ["category", "Renewable Energy"], ["start_date", "2024-11-30"], ["end_date", "2025-05-29"], ["status", "active"], ["user_id", 6], ["created_at", "2025-03-30 20:57:48.724432"], ["updated_at", "2025-03-30 20:57:48.724432"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResearchProject Create (2.4ms)[0m  [1m[32mINSERT INTO "research_projects" ("title", "description", "category", "start_date", "end_date", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Vaccine Effectiveness"], ["description", "Tracking long-term effectiveness of vaccines"], ["category", "Medical Research"], ["start_date", "2024-03-30"], ["end_date", "2025-02-28"], ["status", "completed"], ["user_id", 4], ["created_at", "2025-03-30 20:57:48.734317"], ["updated_at", "2025-03-30 20:57:48.734317"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (3.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Average Temperature"], ["value", 23.5], ["date", "2024-10-01"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:57:48.746510"], ["updated_at", "2025-03-30 20:57:48.746510"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (3.4ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Sea Level Rise"], ["value", 2.0], ["date", "2024-10-01"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:57:48.762059"], ["updated_at", "2025-03-30 20:57:48.762059"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (4.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Average Temperature"], ["value", 24.0], ["date", "2024-10-26"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:57:48.773786"], ["updated_at", "2025-03-30 20:57:48.773786"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (12.1ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Sea Level Rise"], ["value", 2.3], ["date", "2024-10-26"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:57:48.785053"], ["updated_at", "2025-03-30 20:57:48.785053"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Average Temperature"], ["value", 24.5], ["date", "2024-11-20"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:57:48.803303"], ["updated_at", "2025-03-30 20:57:48.803303"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.0ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Sea Level Rise"], ["value", 2.6], ["date", "2024-11-20"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:57:48.811251"], ["updated_at", "2025-03-30 20:57:48.811251"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.3ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Average Temperature"], ["value", 25.0], ["date", "2024-12-15"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:57:48.819034"], ["updated_at", "2025-03-30 20:57:48.819034"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.2ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Sea Level Rise"], ["value", 2.9], ["date", "2024-12-15"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:57:48.827034"], ["updated_at", "2025-03-30 20:57:48.827034"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Average Temperature"], ["value", 25.5], ["date", "2025-01-09"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:57:48.834366"], ["updated_at", "2025-03-30 20:57:48.834366"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.1ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Sea Level Rise"], ["value", 3.2], ["date", "2025-01-09"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:57:48.841384"], ["updated_at", "2025-03-30 20:57:48.841384"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Average Temperature"], ["value", 26.0], ["date", "2025-02-03"], ["description", "Measured at sea level"], ["created_at", "2025-03-30 20:57:48.849110"], ["updated_at", "2025-03-30 20:57:48.849110"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.0ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 4], ["name", "Sea Level Rise"], ["value", 3.5], ["date", "2025-02-03"], ["description", "Measured in millimeters"], ["created_at", "2025-03-30 20:57:48.855813"], ["updated_at", "2025-03-30 20:57:48.855813"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Panel Efficiency"], ["value", 15.0], ["date", "2024-11-30"], ["description", "Percentage of solar energy converted"], ["created_at", "2025-03-30 20:57:48.863960"], ["updated_at", "2025-03-30 20:57:48.863960"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Production Cost"], ["value", 500.0], ["date", "2024-11-30"], ["description", "Cost per panel in dollars"], ["created_at", "2025-03-30 20:57:48.871311"], ["updated_at", "2025-03-30 20:57:48.871311"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Panel Efficiency"], ["value", 15.8], ["date", "2024-12-20"], ["description", "Percentage of solar energy converted"], ["created_at", "2025-03-30 20:57:48.878378"], ["updated_at", "2025-03-30 20:57:48.878378"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Production Cost"], ["value", 475.0], ["date", "2024-12-20"], ["description", "Cost per panel in dollars"], ["created_at", "2025-03-30 20:57:48.885560"], ["updated_at", "2025-03-30 20:57:48.885560"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Panel Efficiency"], ["value", 16.6], ["date", "2025-01-09"], ["description", "Percentage of solar energy converted"], ["created_at", "2025-03-30 20:57:48.892343"], ["updated_at", "2025-03-30 20:57:48.892343"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Production Cost"], ["value", 450.0], ["date", "2025-01-09"], ["description", "Cost per panel in dollars"], ["created_at", "2025-03-30 20:57:48.899706"], ["updated_at", "2025-03-30 20:57:48.899706"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.5ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Panel Efficiency"], ["value", 17.4], ["date", "2025-01-29"], ["description", "Percentage of solar energy converted"], ["created_at", "2025-03-30 20:57:48.906748"], ["updated_at", "2025-03-30 20:57:48.906748"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Production Cost"], ["value", 425.0], ["date", "2025-01-29"], ["description", "Cost per panel in dollars"], ["created_at", "2025-03-30 20:57:48.915309"], ["updated_at", "2025-03-30 20:57:48.915309"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Panel Efficiency"], ["value", 18.2], ["date", "2025-02-18"], ["description", "Percentage of solar energy converted"], ["created_at", "2025-03-30 20:57:48.922245"], ["updated_at", "2025-03-30 20:57:48.922245"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Production Cost"], ["value", 400.0], ["date", "2025-02-18"], ["description", "Cost per panel in dollars"], ["created_at", "2025-03-30 20:57:48.929477"], ["updated_at", "2025-03-30 20:57:48.929477"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.5ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Panel Efficiency"], ["value", 19.0], ["date", "2025-03-10"], ["description", "Percentage of solar energy converted"], ["created_at", "2025-03-30 20:57:48.935968"], ["updated_at", "2025-03-30 20:57:48.935968"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 5], ["name", "Production Cost"], ["value", 375.0], ["date", "2025-03-10"], ["description", "Cost per panel in dollars"], ["created_at", "2025-03-30 20:57:48.942663"], ["updated_at", "2025-03-30 20:57:48.942663"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.0ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 93.0], ["date", "2024-03-30"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:48.949927"], ["updated_at", "2025-03-30 20:57:48.949927"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.3ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 12.0], ["date", "2024-03-30"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:48.956985"], ["updated_at", "2025-03-30 20:57:48.956985"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 94.0], ["date", "2024-04-26"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:48.964777"], ["updated_at", "2025-03-30 20:57:48.964777"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 11.2], ["date", "2024-04-26"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:48.972003"], ["updated_at", "2025-03-30 20:57:48.972003"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 95.0], ["date", "2024-05-24"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:48.980431"], ["updated_at", "2025-03-30 20:57:48.980431"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 10.4], ["date", "2024-05-24"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:48.987278"], ["updated_at", "2025-03-30 20:57:48.987278"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 93.0], ["date", "2024-06-21"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:48.994132"], ["updated_at", "2025-03-30 20:57:48.994132"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 9.6], ["date", "2024-06-21"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.001616"], ["updated_at", "2025-03-30 20:57:49.001616"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.2ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 94.0], ["date", "2024-07-19"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:49.008707"], ["updated_at", "2025-03-30 20:57:49.008707"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 8.8], ["date", "2024-07-19"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.016971"], ["updated_at", "2025-03-30 20:57:49.016971"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.0ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 95.0], ["date", "2024-08-16"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:49.024174"], ["updated_at", "2025-03-30 20:57:49.024174"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 8.0], ["date", "2024-08-16"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.032329"], ["updated_at", "2025-03-30 20:57:49.032329"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 93.0], ["date", "2024-09-13"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:49.039432"], ["updated_at", "2025-03-30 20:57:49.039432"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 7.199999999999999], ["date", "2024-09-13"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.047300"], ["updated_at", "2025-03-30 20:57:49.047300"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.6ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 94.0], ["date", "2024-10-11"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:49.054355"], ["updated_at", "2025-03-30 20:57:49.054355"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 6.3999999999999995], ["date", "2024-10-11"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.063778"], ["updated_at", "2025-03-30 20:57:49.063778"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.2ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 95.0], ["date", "2024-11-08"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:49.071079"], ["updated_at", "2025-03-30 20:57:49.071079"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 5.6], ["date", "2024-11-08"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.078117"], ["updated_at", "2025-03-30 20:57:49.078117"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 93.0], ["date", "2024-12-06"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:49.085824"], ["updated_at", "2025-03-30 20:57:49.085824"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.7ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 4.8], ["date", "2024-12-06"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.093204"], ["updated_at", "2025-03-30 20:57:49.093204"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.9ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 94.0], ["date", "2025-01-03"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:49.100524"], ["updated_at", "2025-03-30 20:57:49.100524"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (3.0ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 4.0], ["date", "2025-01-03"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.107855"], ["updated_at", "2025-03-30 20:57:49.107855"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (1.8ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Effectiveness Rate"], ["value", 95.0], ["date", "2025-01-31"], ["description", "Percentage effectiveness against infection"], ["created_at", "2025-03-30 20:57:49.116804"], ["updated_at", "2025-03-30 20:57:49.116804"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMetric Create (2.3ms)[0m  [1m[32mINSERT INTO "metrics" ("research_project_id", "name", "value", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["research_project_id", 6], ["name", "Side Effect Rate"], ["value", 3.1999999999999993], ["date", "2025-01-31"], ["description", "Percentage reporting any side effects"], ["created_at", "2025-03-30 20:57:49.124080"], ["updated_at", "2025-03-30 20:57:49.124080"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mResearchProject Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "research_projects"[0m
+  [1m[36mMetric Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "metrics"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mMetric Load (0.5ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2025-03-30 18:31:04 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+Redirected to http://127.0.0.1:3000/users/sign_in
+Completed 302 Found in 25ms (ActiveRecord: 0.0ms | Allocations: 4767)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-03-30 18:31:05 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.0ms | Allocations: 620)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 15.4ms | Allocations: 3807)
+  Rendered layout layouts/application.html.erb (Duration: 132.3ms | Allocations: 43753)
+Completed 200 OK in 191ms (Views: 143.7ms | ActiveRecord: 16.5ms | Allocations: 59348)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-03-30 18:31:35 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (4.8ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", "2025-03-30 21:31:35.574677"], ["updated_at", "2025-03-30 21:31:35.575245"], ["id", 4]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 343ms (ActiveRecord: 12.8ms | Allocations: 13323)
+
+
+Started GET "/" for 127.0.0.1 at 2025-03-30 18:31:35 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+Completed 406 Not Acceptable in 6ms (ActiveRecord: 0.4ms | Allocations: 2195)
+
+
+  
+ActionController::MissingExactTemplate (HomeController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2025-03-30 18:32:56 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+Completed 406 Not Acceptable in 27ms (ActiveRecord: 5.5ms | Allocations: 7660)
+
+
+  
+ActionController::MissingExactTemplate (HomeController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2025-03-30 18:33:12 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+Completed 406 Not Acceptable in 79ms (ActiveRecord: 14.4ms | Allocations: 19361)
+
+
+  
+ActionController::MissingExactTemplate (HomeController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2025-03-30 18:33:14 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+Completed 406 Not Acceptable in 9ms (ActiveRecord: 0.5ms | Allocations: 1914)
+
+
+  
+ActionController::MissingExactTemplate (HomeController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2025-03-30 18:33:51 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 105)
+  Rendered layout layouts/application.html.erb (Duration: 110.8ms | Allocations: 40079)
+Completed 200 OK in 135ms (Views: 113.0ms | ActiveRecord: 4.3ms | Allocations: 48042)
+
+

@@ -1,12 +1,35 @@
 Rails.application.routes.draw do
   devise_for :users
-  # devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  # get "up" => "rails/health#show", as: :rails_health_check
-  root to: 'home#index'
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # API routes
+  namespace :api do
+    resources :research_projects, only: [:index, :show, :create, :update, :destroy] do
+      resources :metrics, only: [:index, :create]
+
+      # Export route
+      post 'export', to: 'exports#create'
+      get :exports, to: 'exports#create', on: :member
+
+      # Favorite routes
+      post 'favorite', to: 'favorites#create'
+      delete 'favorite', to: 'favorites#destroy'
+    end
+
+    # Metrics with nested notes
+    resources :metrics, only: [:show, :create, :update, :destroy] do
+      resources :notes, only: [:index], controller: 'notes'
+    end
+
+    resources :notes, only: [:create, :update, :destroy]
+
+    # Get user's favorites
+    resources :favorites, only: [:index]
+    get 'favorites', to: 'research_projects#favorites'
+  end
+
+  # Root path
+  root 'home#index'
+
+  # Catch-all for React frontend routing
+  get '*path', to: 'home#index', constraints: ->(request) { !request.xhr? && request.format.html? }
 end
