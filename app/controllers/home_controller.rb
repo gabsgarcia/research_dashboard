@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    # Redirect to login if not signed in
-    redirect_to new_user_session_path unless user_signed_in?
+    # React will handle the UI once the page loads
+    # Just serve the empty container
   end
 end
