@@ -7,14 +7,14 @@ class Api::ResearchProjectsController < ApplicationController
   def index
     # For admins, show all projects
     # For researchers, show only their projects
-    projects = if current_user.admin?
+    projects = if current_user.role == "admin"
                 ResearchProject.all
               else
                 current_user.research_projects
               end
 
-    # Converts the projects to JSON and sends them to the frontend
-    render json: projects
+    # Explicitly convert to array and return as JSON
+    render json: projects.to_a
   end
 
   def show

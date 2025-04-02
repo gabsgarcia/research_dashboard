@@ -1,25 +1,41 @@
-// Entry point for the build script in your package.json
-import React from "react";
-import { createRoot } from "react-dom/client";
-import App from "./components/App";
-import ProjectDetails from "./components/ProjectDetails";
+// app/javascript/application.js
+// import React from "react";
+// import { createRoot } from "react-dom/client";
+// import App from "./components/App";
 
-// Wait for the DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("research-dashboard-app");
+// console.log("APPLICATION.JS LOADED!");
+// // Wait for DOM to be fully loaded
+// document.addEventListener("DOMContentLoaded", () => {
+//   console.log("DOM LOADED!");
+//   const container = document.getElementById("research-dashboard-app");
+
+//   // Debug: Check if the container exists
+//   if (container) {
+//     console.log("Found container, mounting React app");
+//     const root = createRoot(container);
+//     root.render(React.createElement(App));
+//   } else {
+//     console.error("Container #research-dashboard-app not found in the DOM");
+//   }
+// });
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './components/App';
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM loaded, initializing React app");
+  const container = document.getElementById('research-dashboard-app');
 
   if (container) {
-    const root = createRoot(container);
-
-    // Basic routing based on the URL path
-    const path = window.location.pathname;
-
-    // If the path includes /projects/ and a project ID, render the ProjectDetails component
-    if (path.match(/\/projects\/\d+/)) {
-      root.render(<ProjectDetails />);
-    } else {
-      // Otherwise, render the main App component
-      root.render(<App />);
+    try {
+      console.log("Found container, mounting App component");
+      const root = createRoot(container);
+      root.render(React.createElement(App));
+      console.log("React app mounted successfully");
+    } catch (error) {
+      console.error("Error mounting React app:", error);
     }
+  } else {
+    console.error("Container #research-dashboard-app not found");
   }
 });

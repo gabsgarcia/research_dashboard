@@ -36,3 +36,66 @@ const ProjectCard = ({ project }) => {
 };
 
 export default ProjectCard;
+app/javascript/components/ProjectCard.jsx
+// import React from 'react';
+
+// const ProjectCard = ({ project, isFavorite = false, onToggleFavorite = () => {} }) => {
+//   // Handle null or undefined project
+//   if (!project) {
+//     console.error('ProjectCard received null or undefined project');
+//     return null;
+//   }
+
+//   // Diagnostic logging
+//   console.log('ProjectCard - Rendering project:', project);
+
+//   // Safe access to project properties with defaults
+//   const {
+//     id = 'unknown',
+//     title = 'Untitled Project',
+//     description = 'No description provided',
+//     created_at = new Date().toISOString(),
+//     metrics_count = 0
+//   } = project;
+
+//   const handleFavoriteClick = (e) => {
+//     e.preventDefault(); // Prevent navigating to project details
+//     onToggleFavorite(id);
+//   };
+
+//   return (
+//     <div className="project-card">
+//       <div className="card-header">
+//         <h3>{title}</h3>
+//         <button
+//           className={`favorite-button ${isFavorite ? 'favorited' : ''}`}
+//           onClick={handleFavoriteClick}
+//           aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+//         >
+//           {isFavorite ? '★' : '☆'}
+//         </button>
+//       </div>
+
+//       <p className="project-description">
+//         {description && description.length > 100
+//           ? `${description.substring(0, 100)}...`
+//           : description}
+//       </p>
+
+//       <div className="project-meta">
+//         <span className="created-date">
+//           Created: {new Date(created_at).toLocaleDateString()}
+//         </span>
+//         {metrics_count > 0 && (
+//           <span className="metrics-count">{metrics_count} metrics</span>
+//         )}
+//       </div>
+
+//       <button className="view-details-button">
+//         View Details
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default ProjectCard;
