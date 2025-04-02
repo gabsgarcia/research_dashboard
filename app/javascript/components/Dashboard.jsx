@@ -69,14 +69,107 @@
 // // };
 
 // // export default Dashboard;
-// app/javascript/components/Dashboard.jsx
-import React from 'react';
 
+import React, { useState, useEffect } from 'react';
+
+// The Dashboard component shows a list of research projects
 const Dashboard = () => {
+  // State to store the projects data
+  // useState initializes the state with an empty array
+  const [projects, setProjects] = useState([]);
+
+  // State to track if data is still loading
+  const [loading, setLoading] = useState(true);
+
+  // State to store any error messages
+  const [error, setError] = useState(null);
+
+  // useEffect runs after the component renders
+  // The empty array [] as second argument means this only runs once when the component mounts
+  useEffect(() => {
+    console.log('Dashboard component mounted - fetching projects');
+
+    // Fetch projects from your Rails API
+    fetch('/api/research_projects')
+      .then(response => {
+        // Check if the response is successful
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Log the received data for debugging
+        console.log('Projects received:', data);
+
+        // Update the projects state with the received data
+        setProjects(data);
+
+        // Set loading to false since we have the data now
+        setLoading(false);
+      })
+      .catch(error => {
+        // Log any errors
+        console.error('Error fetching projects:', error);
+
+        // Update the error state
+        setError('Failed to load projects. Please try again later.');
+
+        // Set loading to false even if there's an error
+        setLoading(false);
+      });
+  }, []);
+
+  // Show a loading message while data is being fetched
+  if (loading) {
+    return <div className="alert alert-info">Loading projects...</div>;
+  }
+
+  // Show an error message if something went wrong
+  if (error) {
+    return <div className="alert alert-danger">{error}</div>;
+  }
+
+  // Make sure projects is an array (defensive programming)
+  const safeProjects = Array.isArray(projects) ? projects : [];
+
   return (
     <div className="dashboard-container">
-      <h2>Dashboard Component</h2>
-      <p>Dashboard loaded successfully!</p>
+      <h2>Your Research Projects</h2>
+
+      {/* Conditional rendering: show a message if there are no projects */}
+      {safeProjects.length === 0 ? (
+        <div className="alert alert-info">
+          No projects found. Create your first project to get started!
+        </div>
+      ) : (
+        // If there are projects, map through them and display each one
+        <div className="row">
+          {safeProjects.map(project => (
+            // Always use a unique key for list items in React
+            <div className="col-md-4 mb-4" key={project.id || `project-${Math.random()}`}>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">{project.title}</h5>
+                  <p className="card-text">{project.description}</p>
+                  <p>
+                    <strong>Category:</strong> {project.category}
+                  </p>
+                  <p>
+                    <strong>Status:</strong> {project.status}
+                  </p>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => window.location.href = `/projects/${project.id}`}
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

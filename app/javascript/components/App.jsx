@@ -205,17 +205,131 @@
 // };
 
 // export default App;
-// app/javascript/components/App.jsx
-import React from 'react';
-import Dashboard from './Dashboard';
 
-const App = () => {
+// app/javascript/components/Dashboard.jsx
+import React, { useState, useEffect } from 'react';
+
+const Dashboard = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(null); // null means "unknown"
+
+  useEffect(() => {
+    // First, check if user is logged in
+    fetch('/users/check_logged_in', {
+      headers: {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (response.status === 200) {
+        setIsLoggedIn(true);
+        return fetchProjects();
+      } else {
+        setIsLoggedIn(false);
+        setLoading(false);
+        return Promise.reject('Not logged in');
+      }
+    })
+    .catch(error => {
+      console.error('Error checking authentication:', error);
+      setLoading(false);
+    });
+  }, []);
+
+  const fetchProjects = () => {
+    // Get CSRF token
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+    return fetch('/api/research_projects', {
+      headers: {
+        'X-CSRF-Token': csrfToken,
+        'Accept': 'application/json'
+      },
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Projects received:', data);
+      setProjects(data);
+      setLoading(false);
+    })
+    .catch(error => {
+      console.error('Error fetching projects:', error);
+      setError('Failed to load projects. Please try again later.');
+      setLoading(false);
+    });
+  };
+
+  // Show loading while checking authentication
+  if (loading && isLoggedIn === null) {
+    return <div className="alert alert-info">Checking authentication...</div>;
+  }
+
+  // If not logged in, show login link
+  if (!isLoggedIn) {
+    return (
+      <div className="alert alert-warning">
+        <h3>Authentication Required</h3>
+        <p>You need to be logged in to view your projects.</p>
+        <a href="/users/sign_in" className="btn btn-primary">Sign In</a>
+      </div>
+    );
+  }
+
+  // Show loading while fetching projects
+  if (loading) {
+    return <div className="alert alert-info">Loading projects...</div>;
+  }
+
+  // Show error if any
+  if (error) {
+    return <div className="alert alert-danger">{error}</div>;
+  }
+
+  // Ensure projects is an array
+  const safeProjects = Array.isArray(projects) ? projects : [];
+
   return (
-    <div className="container mt-4">
-      <h1>Research Dashboard</h1>
-      <Dashboard />
+    <div className="dashboard-container">
+      <h2>Your Research Projects</h2>
+
+      {safeProjects.length === 0 ? (
+        <div className="alert alert-info">
+          No projects found. Create your first project to get started!
+        </div>
+      ) : (
+        <div className="row">
+          {safeProjects.map(project => (
+            <div className="col-md-4 mb-4" key={project.id || `project-${Math.random()}`}>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">{project.title}</h5>
+                  <p className="card-text">{project.description}</p>
+                  <p><strong>Category:</strong> {project.category}</p>
+                  <p><strong>Status:</strong> {project.status}</p>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => window.location.href = `/projects/${project.id}`}
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
-export default App;
+export default Dashboard;
