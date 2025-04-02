@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+/* Custom styles can be added here */
+.app-container {
+  min-height: 100vh;
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}

@@ -13,8 +13,8 @@ class Api::ResearchProjectsController < ApplicationController
                 current_user.research_projects
               end
 
-  # Converts the projects to JSON and sends them to the frontend
-    render json: projects
+    # Explicitly convert to array and return as JSON
+    render json: projects.to_a
   end
 
   def show
@@ -56,7 +56,7 @@ class Api::ResearchProjectsController < ApplicationController
 
   def set_research_project
     # Allow admins to access any project, but researchers only their own
-    @research_project = if current_user.role == "admin"
+    @research_project = if current_user.admin?
                           ResearchProject.find(params[:id])
                         else
                           current_user.research_projects.find(params[:id])

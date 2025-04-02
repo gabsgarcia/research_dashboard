@@ -70,4 +70,5 @@ end
 gem "react-rails", "~> 3.2" # For front end with react
 gem 'devise'           # For user authentication
 
-gem "jsbundling-rails", "~> 1.3"
+gem "jsbundling-rails", "~> 1.3" # For javascript building
+gem 'faker' # For random data

@@ -1,143 +1,145 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { fetchProject, fetchMetrics, exportProjectCSV } from '../services/api';
-import MetricChart from './MetricChart';
-import MetricNotes from './MetricNotes';
+import axios from 'axios';
 
 const ProjectDetails = () => {
-  const { id } = useParams();
   const [project, setProject] = useState(null);
-  const [metrics, setMetrics] = useState([]);
-  const [uniqueMetricNames, setUniqueMetricNames] = useState([]);
-  const [selectedMetricName, setSelectedMetricName] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [exportLoading, setExportLoading] = useState(false);
 
   useEffect(() => {
-    const loadProjectData = async () => {
+    const fetchProjectData = async () => {
       try {
-        setIsLoading(true);
-        // Fetch project details
-        const projectData = await fetchProject(id);
-        setProject(projectData);
+        // Extract the project ID from the URL
+        const pathParts = window.location.pathname.split('/');
+        const projectId = pathParts[pathParts.length - 1];
 
-        // Fetch project metrics
-        const metricsData = await fetchMetrics(id);
-        setMetrics(metricsData);
-
-        // Extract unique metric names
-        const metricNames = [...new Set(metricsData.map(metric => metric.name))];
-        setUniqueMetricNames(metricNames);
-
-        // Set first metric name as selected by default if available
-        if (metricNames.length > 0) {
-          setSelectedMetricName(metricNames[0]);
+        if (!projectId) {
+          setError('Project ID not found in URL');
+          setLoading(false);
+          return;
         }
+
+        // Set up CSRF token
+        const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        if (token) {
+          axios.defaults.headers.common['X-CSRF-Token'] = token;
+        }
+
+        // Fetch project details
+        const response = await axios.get(`/api/research_projects/${projectId}`);
+        setProject(response.data);
       } catch (err) {
+        console.error('Failed to load project:', err);
         setError('Failed to load project details. Please try again later.');
-        console.error('Project details loading error:', err);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
-    loadProjectData();
-  }, [id]);
+    fetchProjectData();
+  }, []);
 
-  const handleMetricSelect = (metricName) => {
-    setSelectedMetricName(metricName);
+  const handleBackClick = () => {
+    window.location.href = '/';
   };
 
-  const handleExportCSV = async () => {
-    try {
-      setExportLoading(true);
-      await exportProjectCSV(id);
-      setExportLoading(false);
-    } catch (err) {
-      setError('Failed to export data. Please try again.');
-      console.error('CSV export error:', err);
-      setExportLoading(false);
-    }
-  };
+  if (loading) {
+    return (
+      <div className="container mt-5 text-center">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        <p className="mt-3">Loading project details...</p>
+      </div>
+    );
+  }
 
-  if (isLoading) return <div className="loading">Loading project details...</div>;
-  if (error) return <div className="error-message">{error}</div>;
-  if (!project) return <div className="not-found">Project not found</div>;
-
-  // Find a sample metric with the selected name to display its notes
-  const sampleMetric = metrics.find(metric => metric.name === selectedMetricName);
-
-  return (
-    <div className="project-details-container">
-      <div className="header-section">
-        <Link to="/" className="back-button">← Back to Dashboard</Link>
-        <h1>{project.title}</h1>
-        <button
-          className="export-button"
-          onClick={handleExportCSV}
-          disabled={exportLoading}
-        >
-          {exportLoading ? 'Exporting...' : 'Export to CSV'}
+  if (error) {
+    return (
+      <div className="container mt-5">
+        <div className="alert alert-danger" role="alert">
+          <h4 className="alert-heading">Error</h4>
+          <p>{error}</p>
+        </div>
+        <button className="btn btn-primary" onClick={handleBackClick}>
+          Back to Dashboard
         </button>
       </div>
+    );
+  }
 
-      <div className="project-info">
-        <p className="description">{project.description}</p>
-        <div className="metadata">
-          <span>Category: {project.category}</span>
-          <span>Status: {project.status}</span>
-          <span>Timeline: {new Date(project.start_date).toLocaleDateString()} to {new Date(project.end_date).toLocaleDateString()}</span>
+  if (!project) {
+    return (
+      <div className="container mt-5">
+        <div className="alert alert-warning" role="alert">
+          <h4 className="alert-heading">Project Not Found</h4>
+          <p>The requested project could not be found.</p>
+        </div>
+        <button className="btn btn-primary" onClick={handleBackClick}>
+          Back to Dashboard
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container py-4">
+      <button className="btn btn-outline-primary mb-4" onClick={handleBackClick}>
+        &larr; Back to Dashboard
+      </button>
+
+      <div className="card">
+        <div className="card-header bg-primary text-white">
+          <h2 className="mb-0">{project.title}</h2>
+        </div>
+        <div className="card-body">
+          <div className="mb-4">
+            <h5 className="text-muted">{project.category}</h5>
+            <div className="mt-2">
+              <span className={`badge bg-${project.status === 'active' ? 'success' :
+                                     project.status === 'completed' ? 'primary' :
+                                     project.status === 'paused' ? 'warning' : 'danger'}`}>
+                {project.status}
+              </span>
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <h4>Description</h4>
+            <p>{project.description}</p>
+          </div>
+
+          <div className="row mb-4">
+            <div className="col-md-6">
+              <h4>Project Timeline</h4>
+              <p>
+                <strong>Start Date:</strong> {new Date(project.start_date).toLocaleDateString()}
+              </p>
+              <p>
+                <strong>End Date:</strong> {new Date(project.end_date).toLocaleDateString()}
+              </p>
+            </div>
+            <div className="col-md-6">
+              <h4>Additional Information</h4>
+              <p>
+                <strong>Created At:</strong> {new Date(project.created_at).toLocaleString()}
+              </p>
+              <p>
+                <strong>Last Updated:</strong> {new Date(project.updated_at).toLocaleString()}
+              </p>
+            </div>
+          </div>
+
+          <div className="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button className="btn btn-primary me-md-2" type="button">
+              Edit Project
+            </button>
+            <button className="btn btn-outline-danger" type="button">
+              Delete Project
+            </button>
+          </div>
         </div>
       </div>
-
-      {metrics.length === 0 ? (
-        <div className="no-metrics">
-          <p>No metrics available for this project yet.</p>
-        </div>
-      ) : (
-        <div className="metrics-section">
-          <div className="metrics-sidebar">
-            <h2>Metrics</h2>
-            <ul>
-              {uniqueMetricNames.map(metricName => (
-                <li
-                  key={metricName}
-                  className={selectedMetricName === metricName ? 'selected' : ''}
-                  onClick={() => handleMetricSelect(metricName)}
-                >
-                  {metricName}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="metric-content">
-            {selectedMetricName ? (
-              <>
-                <div className="metric-header">
-                  <h2>{selectedMetricName}</h2>
-                  {sampleMetric && (
-                    <p>{sampleMetric.notes}</p>
-                  )}
-                </div>
-
-                <div className="chart-container">
-                  <MetricChart metricName={selectedMetricName} metrics={metrics} />
-                </div>
-
-                {sampleMetric && (
-                  <div className="notes-container">
-                    <MetricNotes metricId={sampleMetric.id} />
-                  </div>
-                )}
-              </>
-            ) : (
-              <p>Select a metric to view details</p>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

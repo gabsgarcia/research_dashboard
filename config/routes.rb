@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
 
     # Metrics with nested notes
-    resources :metrics, only: [:show, :create, :update, :destroy] do
+    resources :metrics, only: [:show, :update, :destroy] do
       resources :notes, only: [:index], controller: 'notes'
     end
 
@@ -27,10 +27,15 @@ Rails.application.routes.draw do
     get 'favorites', to: 'research_projects#favorites'
   end
 
+  # Frontend routes - Using DashboardController
+  get 'projects/:id', to: 'dashboard#show', as: 'project'
+
   # Root path
   root 'home#index'
+
+  # Dashboard root
+  get 'dashboard', to: 'dashboard#index'
 
   # Catch-all for React routing
   get '*path', to: 'home#index', constraints: ->(request) { !request.xhr? && request.format.html? }
 end
-
