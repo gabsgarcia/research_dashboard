@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get '/users/check_logged_in', to: 'devise/sessions#check_logged_in'
+    get '/users/check_logged_in', to: 'users/sessions#check_logged_in'
   end
 
   # API routes

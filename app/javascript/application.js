@@ -1,41 +1,32 @@
-// app/javascript/application.js
-// import React from "react";
-// import { createRoot } from "react-dom/client";
-// import App from "./components/App";
-
-// console.log("APPLICATION.JS LOADED!");
-// // Wait for DOM to be fully loaded
-// document.addEventListener("DOMContentLoaded", () => {
-//   console.log("DOM LOADED!");
-//   const container = document.getElementById("research-dashboard-app");
-
-//   // Debug: Check if the container exists
-//   if (container) {
-//     console.log("Found container, mounting React app");
-//     const root = createRoot(container);
-//     root.render(React.createElement(App));
-//   } else {
-//     console.error("Container #research-dashboard-app not found in the DOM");
-//   }
-// });
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './components/App';
 
+/**
+ * This is the main entry point for the React application.
+ * It waits for the DOM to load, then mounts the React app
+ * to the appropriate container element.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("DOM loaded, initializing React app");
+  console.log('DOM loaded, initializing React application');
+
+  // Find the container element where React will be mounted
   const container = document.getElementById('research-dashboard-app');
 
+  // Only attempt to mount React if the container exists
   if (container) {
     try {
-      console.log("Found container, mounting App component");
+      // Create a React root and render the App component
+      console.log('Found container, mounting App component');
       const root = createRoot(container);
       root.render(React.createElement(App));
-      console.log("React app mounted successfully");
+      console.log('React application mounted successfully');
     } catch (error) {
-      console.error("Error mounting React app:", error);
+      // Log any errors that occur during mounting
+      console.error('Error mounting React application:', error);
     }
   } else {
-    console.error("Container #research-dashboard-app not found");
+    // Log a warning if the container doesn't exist
+    console.warn('Container #research-dashboard-app not found in the DOM');
   }
 });
