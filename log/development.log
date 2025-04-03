@@ -8729,3 +8729,1014 @@ Processing by Api::ResearchProjectsController#index as HTML
 Completed 200 OK in 12ms (Views: 1.2ms | ActiveRecord: 3.4ms | Allocations: 2610)
 
 
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:08:01 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 187)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 1066.0ms | Allocations: 109919)
+Completed 200 OK in 1385ms (Views: 1351.6ms | ActiveRecord: 24.6ms | Allocations: 395758)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:08:03 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1886)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:08:03 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (1.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 46ms (Views: 5.7ms | ActiveRecord: 5.3ms | Allocations: 12161)
+
+
+Started GET "/projects/19" for 127.0.0.1 at 2025-04-02 23:08:06 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 2334)
+Completed 200 OK in 15ms (Views: 6.2ms | ActiveRecord: 0.4ms | Allocations: 4683)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:08:06 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 1190)
+
+
+Started GET "/api/research_projects/19" for 127.0.0.1 at 2025-04-02 23:08:07 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (1.9ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 41ms (Views: 2.3ms | ActiveRecord: 2.6ms | Allocations: 2991)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2025-04-02 23:08:22 -0300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 45ms (ActiveRecord: 0.5ms | Allocations: 2390)
+
+
+  
+ActionController::MissingExactTemplate (DashboardController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:08:34 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 3517)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.4ms | Allocations: 3766)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:08:34 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1224)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:08:34 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.5ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 0.9ms | Allocations: 2617)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2025-04-02 23:08:37 -0300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 6ms (ActiveRecord: 0.4ms | Allocations: 2056)
+
+
+  
+ActionController::MissingExactTemplate (DashboardController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2025-04-02 23:08:43 -0300
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (18.2ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", nil], ["updated_at", "2025-04-03 02:08:43.271589"], ["id", 40]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 57ms (ActiveRecord: 24.6ms | Allocations: 7957)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:08:43 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 2518)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.0ms | Allocations: 2770)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:08:43 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+Completed 401 Unauthorized in 3ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 382)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-04-02 23:08:51 -0300
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.4ms | Allocations: 613)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 16.0ms | Allocations: 3500)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 5679)
+Completed 200 OK in 27ms (Views: 26.1ms | ActiveRecord: 0.0ms | Allocations: 7190)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-04-02 23:08:55 -0300
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 316ms (ActiveRecord: 1.2ms | Allocations: 4225)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:08:55 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 3479)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.3ms | Allocations: 3708)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:08:55 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1188)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:08:55 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 0.9ms | Allocations: 2636)
+
+
+Started GET "/projects/20" for 127.0.0.1 at 2025-04-02 23:08:59 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2035)
+Completed 200 OK in 13ms (Views: 7.2ms | ActiveRecord: 0.3ms | Allocations: 3714)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:08:59 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1190)
+
+
+Started GET "/api/research_projects/20" for 127.0.0.1 at 2025-04-02 23:08:59 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 2237)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2025-04-02 23:09:03 -0300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 5ms (ActiveRecord: 0.3ms | Allocations: 2067)
+
+
+  
+ActionController::MissingExactTemplate (DashboardController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:09:08 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 3127)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.3ms | Allocations: 3340)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:09:08 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1178)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:09:08 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 2567)
+
+
+Started GET "/projects/19" for 127.0.0.1 at 2025-04-02 23:09:45 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2035)
+Completed 200 OK in 13ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 3746)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:09:45 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 10ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 1187)
+
+
+Started GET "/api/research_projects/19" for 127.0.0.1 at 2025-04-02 23:09:45 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 2250)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2025-04-02 23:09:53 -0300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 16ms (ActiveRecord: 0.3ms | Allocations: 2028)
+
+
+  
+ActionController::MissingExactTemplate (DashboardController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:09:57 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 3088)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.4ms | Allocations: 3293)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:09:57 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1181)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:09:57 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.5ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 11ms (Views: 3.7ms | ActiveRecord: 0.7ms | Allocations: 2558)
+
+
+Started GET "/projects/20" for 127.0.0.1 at 2025-04-02 23:12:15 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2035)
+Completed 200 OK in 13ms (Views: 5.8ms | ActiveRecord: 0.4ms | Allocations: 3737)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:12:15 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 1187)
+
+
+Started GET "/api/research_projects/20" for 127.0.0.1 at 2025-04-02 23:12:15 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 2229)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2025-04-02 23:12:20 -0300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 4ms (ActiveRecord: 0.3ms | Allocations: 2046)
+
+
+  
+ActionController::MissingExactTemplate (DashboardController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.5.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.5.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.13) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.13) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+react-rails (3.2.1) lib/react/rails/controller_lifecycle.rb:33:in `use_react_component_helper'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.5.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.5.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.5.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.5.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.5.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.5.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.5.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.5.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.5.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.5.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.5.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.5.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.5.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.12) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.12) lib/rack/etag.rb:29:in `call'
+rack (3.1.12) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.12) lib/rack/head.rb:15:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.0) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.12) lib/rack/method_override.rb:28:in `call'
+rack (3.1.12) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.12) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/projects/19" for 127.0.0.1 at 2025-04-02 23:22:27 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2041)
+Completed 200 OK in 30ms (Views: 7.3ms | ActiveRecord: 9.2ms | Allocations: 6605)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:22:27 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 17ms (Views: 0.3ms | ActiveRecord: 3.6ms | Allocations: 1157)
+
+
+Started GET "/api/research_projects/19" for 127.0.0.1 at 2025-04-02 23:22:27 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (1.0ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 1.3ms | Allocations: 2270)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:22:30 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 3106)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.4ms | Allocations: 3310)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:22:30 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1181)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:22:30 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (16.5ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 37ms (Views: 1.7ms | ActiveRecord: 17.0ms | Allocations: 2585)
+
+
+Started GET "/projects/18" for 127.0.0.1 at 2025-04-02 23:22:34 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 2035)
+Completed 200 OK in 11ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 3728)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:22:34 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1187)
+
+
+Started GET "/api/research_projects/18" for 127.0.0.1 at 2025-04-02 23:22:34 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.5ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 1.0ms | Allocations: 2241)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:24:53 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 187)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 1100.1ms | Allocations: 110605)
+Completed 200 OK in 1478ms (Views: 1455.6ms | ActiveRecord: 15.2ms | Allocations: 396447)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:24:55 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 11ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 1885)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:24:55 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.9ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 41ms (Views: 1.5ms | ActiveRecord: 5.6ms | Allocations: 12158)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:24:59 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 3397)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.5ms | Allocations: 3638)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:24:59 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 1190)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:25:00 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.7ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 86ms (Views: 5.6ms | ActiveRecord: 1.3ms | Allocations: 2574)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:25:02 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 3119)
+Completed 200 OK in 45ms (Views: 44.3ms | ActiveRecord: 0.3ms | Allocations: 3329)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:25:02 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1163)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:25:02 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 8ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 2570)
+
+
+Started GET "/projects/19" for 127.0.0.1 at 2025-04-02 23:25:04 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2335)
+Completed 200 OK in 13ms (Views: 8.0ms | ActiveRecord: 0.3ms | Allocations: 4667)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:25:04 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1210)
+
+
+Started GET "/api/research_projects/19" for 127.0.0.1 at 2025-04-02 23:25:04 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 2966)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-02 23:25:07 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 3123)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.3ms | Allocations: 3333)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:25:07 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (17.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 17.0ms | Allocations: 1178)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-02 23:25:07 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.8ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 23ms (Views: 11.5ms | ActiveRecord: 1.1ms | Allocations: 2589)
+
+
+Started GET "/projects/19" for 127.0.0.1 at 2025-04-02 23:27:01 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 2036)
+Completed 200 OK in 10ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 3715)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-02 23:27:01 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1199)
+
+
+Started GET "/api/research_projects/19" for 127.0.0.1 at 2025-04-02 23:27:01 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 0.6ms | Allocations: 2246)
+
+

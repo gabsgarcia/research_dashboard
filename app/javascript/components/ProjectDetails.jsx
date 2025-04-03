@@ -1,179 +1,83 @@
-// app/javascript/components/ProjectDetails.jsx
 import React, { useState, useEffect } from 'react';
-import MetricChart from './MetricChart';
-import MetricNotes from './MetricNotes';
+import axios from 'axios';
 
-/**
- * ProjectDetails component that displays detailed information about a specific project.
- * Includes project metadata, metrics, and allows adding/viewing notes.
- */
 const ProjectDetails = () => {
-  // State for project data
   const [project, setProject] = useState(null);
-
-  // State for metrics data
-  const [metrics, setMetrics] = useState([]);
-
-  // State for the currently selected metric
-  const [selectedMetric, setSelectedMetric] = useState(null);
-
-  // State for tracking loading status
   const [loading, setLoading] = useState(true);
-
-  // State for tracking error messages
   const [error, setError] = useState(null);
 
-  /**
-   * Extract the project ID from the URL
-   * @returns {string|null} The project ID or null if not found
-   */
-  const getProjectIdFromUrl = () => {
-    // Split the URL path
-    const pathParts = window.location.pathname.split('/');
-    // The last part should be the project ID
-    const projectId = pathParts[pathParts.length - 1];
-
-    // Make sure it's a number
-    return !isNaN(projectId) ? projectId : null;
-  };
-
-  // Load project data when the component mounts
   useEffect(() => {
-    // Get the project ID from the URL
-    const projectId = getProjectIdFromUrl();
+    const fetchProjectData = async () => {
+      try {
+        // Extract the project ID from the URL
+        const pathParts = window.location.pathname.split('/');
+        const projectId = pathParts[pathParts.length - 1];
 
-    // If no project ID is found, set an error
-    if (!projectId) {
-      setError('Project ID not found in URL');
-      setLoading(false);
-      return;
-    }
+        if (!projectId) {
+          setError('Project ID not found in URL');
+          setLoading(false);
+          return;
+        }
 
-    // Get CSRF token for Rails authenticity
-    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        // Set up CSRF token
+        const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        if (token) {
+          axios.defaults.headers.common['X-CSRF-Token'] = token;
+        }
 
-    console.log(`Loading details for project ID: ${projectId}`);
-
-    // Fetch project data
-    fetch(`/api/research_projects/${projectId}`, {
-      headers: {
-        'X-CSRF-Token': csrfToken,
-        'Accept': 'application/json'
-      },
-      credentials: 'same-origin'
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
+        // Fetch project details
+        const response = await axios.get(`/api/research_projects/${projectId}`);
+        setProject(response.data);
+      } catch (err) {
+        console.error('Failed to load project:', err);
+        setError('Failed to load project details. Please try again later.');
+      } finally {
+        setLoading(false);
       }
-      return response.json();
-    })
-    .then(projectData => {
-      console.log('Project data loaded:', projectData);
-      setProject(projectData);
+    };
 
-      // Once we have the project, fetch its metrics
-      return fetch(`/api/research_projects/${projectId}/metrics`, {
-        headers: {
-          'X-CSRF-Token': csrfToken,
-          'Accept': 'application/json'
-        },
-        credentials: 'same-origin'
-      });
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`API error fetching metrics: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(metricsData => {
-      console.log('Metrics data loaded:', metricsData);
-      setMetrics(metricsData);
+    fetchProjectData();
+  }, []);
 
-      // If metrics exist, select the first one by default
-      if (metricsData.length > 0) {
-        setSelectedMetric(metricsData[0]);
-      }
-
-      setLoading(false);
-    })
-    .catch(error => {
-      console.error('Error loading project details:', error);
-      setError('Failed to load project details. Please try again later.');
-      setLoading(false);
-    });
-  }, []); // Empty dependency array means this effect runs once when component mounts
-
-  /**
-   * Handle clicking on a metric in the sidebar
-   * @param {Object} metric - The metric object that was clicked
-   */
-  const handleMetricClick = (metric) => {
-    setSelectedMetric(metric);
-  };
-
-  /**
-   * Format a date string in a readable format
-   * @param {string} dateString - The ISO date string
-   * @returns {string} Formatted date string
-   */
-  const formatDate = (dateString) => {
-    if (!dateString) return 'N/A';
-
-    try {
-      const date = new Date(dateString);
-      return date.toLocaleDateString();
-    } catch (e) {
-      return 'Invalid date';
-    }
-  };
-
-  /**
-   * Navigate back to the dashboard
-   */
   const handleBackClick = () => {
-    window.location.href = '/dashboard';
+    window.location.href = '/';
   };
 
-  // Show loading indicator
   if (loading) {
     return (
-      <div className="text-center py-5">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Loading...</span>
+      <div className="container mt-5">
+        <div className="text-center">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <p className="mt-3">Loading project details...</p>
         </div>
-        <p className="mt-3">Loading project details...</p>
       </div>
     );
   }
 
-  // Show error message
   if (error) {
     return (
-      <div className="container mt-4">
+      <div className="container mt-5">
         <div className="alert alert-danger" role="alert">
           <h4 className="alert-heading">Error</h4>
           <p>{error}</p>
         </div>
         <button className="btn btn-primary" onClick={handleBackClick}>
-          <i className="bi bi-arrow-left me-2"></i>
           Back to Dashboard
         </button>
       </div>
     );
   }
 
-  // Show not found message if project doesn't exist
   if (!project) {
     return (
-      <div className="container mt-4">
+      <div className="container mt-5">
         <div className="alert alert-warning" role="alert">
           <h4 className="alert-heading">Project Not Found</h4>
           <p>The requested project could not be found.</p>
         </div>
         <button className="btn btn-primary" onClick={handleBackClick}>
-          <i className="bi bi-arrow-left me-2"></i>
           Back to Dashboard
         </button>
       </div>
@@ -181,121 +85,54 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="container mt-4">
-      {/* Back button */}
+    <div className="container py-4">
       <button className="btn btn-outline-primary mb-4" onClick={handleBackClick}>
-        <i className="bi bi-arrow-left me-2"></i>
-        Back to Dashboard
+        &larr; Back to Dashboard
       </button>
 
-      {/* Project header */}
-      <div className="card mb-4">
+      <div className="card">
         <div className="card-header bg-primary text-white">
           <h2 className="mb-0">{project.title}</h2>
         </div>
         <div className="card-body">
-          {/* Project metadata */}
+          <div className="mb-4">
+            <h5 className="text-muted">{project.category}</h5>
+            <div className="mt-2">
+              <span className={`badge bg-${project.status === 'active' ? 'success' :
+                                      project.status === 'completed' ? 'primary' :
+                                      project.status === 'paused' ? 'warning' : 'danger'}`}>
+                {project.status}
+              </span>
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <h4>Description</h4>
+            <p>{project.description}</p>
+          </div>
+
           <div className="row mb-4">
             <div className="col-md-6">
-              <h4>Project Details</h4>
-              <p><strong>Category:</strong> {project.category}</p>
+              <h4>Project Timeline</h4>
               <p>
-                <strong>Status:</strong>
-                <span className={`badge ${
-                  project.status === 'active' ? 'bg-success' :
-                  project.status === 'completed' ? 'bg-primary' :
-                  project.status === 'paused' ? 'bg-warning text-dark' : 'bg-danger'
-                } ms-2`}>
-                  {project.status}
-                </span>
+                <strong>Start Date:</strong> {new Date(project.start_date).toLocaleDateString()}
               </p>
-              <p><strong>Description:</strong><br/>{project.description}</p>
+              <p>
+                <strong>End Date:</strong> {new Date(project.end_date).toLocaleDateString()}
+              </p>
             </div>
             <div className="col-md-6">
-              <h4>Timeline</h4>
-              <p><strong>Start Date:</strong> {formatDate(project.start_date)}</p>
-              <p><strong>End Date:</strong> {formatDate(project.end_date)}</p>
-              <p><strong>Created:</strong> {formatDate(project.created_at)}</p>
-              <p><strong>Last Updated:</strong> {formatDate(project.updated_at)}</p>
+              <h4>Additional Information</h4>
+              <p>
+                <strong>Created At:</strong> {new Date(project.created_at).toLocaleString()}
+              </p>
+              <p>
+                <strong>Last Updated:</strong> {new Date(project.updated_at).toLocaleString()}
+              </p>
             </div>
           </div>
-
-          {/* Export button */}
-          <a
-            href={`/api/research_projects/${project.id}/export.csv`}
-            className="btn btn-outline-success mb-3"
-          >
-            <i className="bi bi-file-earmark-excel me-2"></i>
-            Export to CSV
-          </a>
         </div>
       </div>
-
-      {/* Metrics section */}
-      <h3 className="mb-3">Project Metrics</h3>
-
-      {metrics.length === 0 ? (
-        <div className="alert alert-info">
-          <p>No metrics have been added to this project yet.</p>
-          <button className="btn btn-primary mt-2">
-            <i className="bi bi-plus-circle me-2"></i>
-            Add Metric
-          </button>
-        </div>
-      ) : (
-        <div className="row">
-          {/* Metrics sidebar */}
-          <div className="col-md-3">
-            <div className="list-group">
-              {metrics.map(metric => (
-                <button
-                  key={metric.id}
-                  className={`list-group-item list-group-item-action ${
-                    selectedMetric && selectedMetric.id === metric.id ? 'active' : ''
-                  }`}
-                  onClick={() => handleMetricClick(metric)}
-                >
-                  {metric.name}
-                  <span className="float-end badge bg-primary rounded-pill">
-                    {metric.value}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Metric details */}
-          <div className="col-md-9">
-            {selectedMetric ? (
-              <div className="card">
-                <div className="card-header">
-                  <h4>{selectedMetric.name}</h4>
-                </div>
-                <div className="card-body">
-                  <p><strong>Current Value:</strong> {selectedMetric.value}</p>
-                  <p><strong>Date:</strong> {formatDate(selectedMetric.date)}</p>
-                  <p><strong>Description:</strong> {selectedMetric.description}</p>
-
-                  {/* Metric chart */}
-                  <div className="mt-4">
-                    <MetricChart
-                      metricName={selectedMetric.name}
-                      metrics={metrics.filter(m => m.name === selectedMetric.name)}
-                    />
-                  </div>
-
-                  {/* Metric notes */}
-                  <MetricNotes metricId={selectedMetric.id} />
-                </div>
-              </div>
-            ) : (
-              <div className="alert alert-info">
-                <p>Select a metric from the sidebar to view details.</p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

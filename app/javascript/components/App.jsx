@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Dashboard from './Dashboard';
+import ProjectDetails from './ProjectDetails';
 import WelcomeBanner from './WelcomeBanner';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  // Determine if we're on a project details page
+  const isProjectDetailsPage = window.location.pathname.match(/^\/projects\/\d+$/);
 
   useEffect(() => {
     // Set up CSRF token for axios
@@ -34,18 +38,34 @@ const App = () => {
     return <div className="container mt-4">Loading...</div>;
   }
 
-  return (
-    <div className="container mt-4">
-      <WelcomeBanner isLoggedIn={isLoggedIn} />
-      {isLoggedIn ? (
-        <Dashboard />
-      ) : (
+  // If not logged in, show login prompt
+  if (!isLoggedIn) {
+    return (
+      <div className="container mt-4">
+        <WelcomeBanner isLoggedIn={false} />
         <div className="text-center mt-5">
           <h2>Welcome to Research Dashboard</h2>
           <p>Please sign in to access your research projects.</p>
           <a href="/users/sign_in" className="btn btn-primary">Sign In</a>
         </div>
-      )}
+      </div>
+    );
+  }
+
+  // If on project details page, render ProjectDetails component
+  if (isProjectDetailsPage) {
+    return (
+      <div className="container mt-4">
+        <ProjectDetails />
+      </div>
+    );
+  }
+
+  // Otherwise render the dashboard
+  return (
+    <div className="container mt-4">
+      <WelcomeBanner isLoggedIn={true} />
+      <Dashboard />
     </div>
   );
 };

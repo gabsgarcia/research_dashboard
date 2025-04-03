@@ -33,15 +33,12 @@ Rails.application.routes.draw do
     get 'favorites', to: 'research_projects#favorites'
   end
 
-  # Frontend routes - Using DashboardController
+  # Frontend routes
   get 'projects/:id', to: 'dashboard#show', as: 'project'
 
   # Root path
   root 'home#index'
 
-  # Dashboard root
-  get 'dashboard', to: 'dashboard#index'
-
-  # Catch-all for React routing
+  # This should be the last route
   get '*path', to: 'home#index', constraints: ->(request) { !request.xhr? && request.format.html? }
 end
