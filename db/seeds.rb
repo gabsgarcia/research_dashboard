@@ -1,13 +1,8 @@
-# First, make sure you have the Faker gem in your Gemfile:
-# gem 'faker'
-# Then run: bundle install
-
 # Required gems
 require 'faker'
 
 # Set Faker configuration for deterministic output (optional)
 # This ensures you get the same data each time you run the seed
-# Remove this line if you want completely random data each time
 Faker::Config.random = Random.new(42)
 
 # Clear existing data to ensure we're starting fresh

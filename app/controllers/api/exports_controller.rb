@@ -50,7 +50,7 @@ class Api::ExportsController < ApplicationController
           metric.name,
           metric.value,
           metric.date,
-          metric.notes
+          metric.description
         ]
       end
     end

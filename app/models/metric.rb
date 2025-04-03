@@ -1,7 +1,7 @@
 class Metric < ApplicationRecord
   # Associations
   belongs_to :research_project
-  has_many :descriptions, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   # Validations
   validates :name, presence: true

@@ -1,142 +1,245 @@
-import axios from 'axios';
+/**
+ * API service module that provides functions for making API requests.
+ * This centralizes API-related logic and makes it reusable across components.
+ */
 
-// Configure Axios
-const configureAxios = () => {
-  // Get CSRF token from meta tag
-  const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+/**
+ * Gets the CSRF token from the page meta tags
+ * @returns {string|null} The CSRF token or null if not found
+ */
+const getCsrfToken = () => {
+  return document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+};
 
-  // Set default headers
-  if (token) {
-    axios.defaults.headers.common['X-CSRF-Token'] = token;
-  }
+/**
+ * Default request headers including CSRF token and JSON content type
+ * @returns {Object} Headers object
+ */
+const getDefaultHeaders = () => {
+  return {
+    'X-CSRF-Token': getCsrfToken(),
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  };
+};
 
-  // Set content type
-  axios.defaults.headers.common['Content-Type'] = 'application/json';
-
-  // Handle unauthorized responses
-  axios.interceptors.response.use(
-    response => response,
-    error => {
-      if (error.response && error.response.status === 401) {
-        window.location = '/users/sign_in';
-      }
-      return Promise.reject(error);
+/**
+ * Helper function to handle API errors
+ * @param {Response} response - The fetch API response
+ * @returns {Promise} A promise that resolves to the JSON data or rejects with an error
+ */
+const handleResponse = async (response) => {
+  // First check if the response is OK (status 200-299)
+  if (!response.ok) {
+    // Try to get error details from the response
+    let errorMessage;
+    try {
+      const errorData = await response.json();
+      errorMessage = errorData.error || errorData.message || `API error: ${response.status}`;
+    } catch (e) {
+      errorMessage = `API error: ${response.status}`;
     }
-  );
+
+    throw new Error(errorMessage);
+  }
+
+  // For successful requests, return the JSON data
+  return response.json();
 };
 
-// Call the configuration function
-configureAxios();
+// API functions for Research Projects
+const projectsApi = {
+  /**
+   * Get all projects
+   * @returns {Promise} Promise resolving to array of projects
+   */
+  getAll: () => {
+    return fetch('/api/research_projects', {
+      headers: getDefaultHeaders(),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
+  },
 
-// Base API URL
-const API_URL = '/api';
+  /**
+   * Get a specific project by ID
+   * @param {number} id - Project ID
+   * @returns {Promise} Promise resolving to project data
+   */
+  getById: (id) => {
+    return fetch(`/api/research_projects/${id}`, {
+      headers: getDefaultHeaders(),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
+  },
 
-// Error handler
-const handleError = (error) => {
-  console.error('API Error:', error.response || error);
-  throw error;
-};
+  /**
+   * Create a new project
+   * @param {Object} projectData - Project data
+   * @returns {Promise} Promise resolving to created project
+   */
+  create: (projectData) => {
+    return fetch('/api/research_projects', {
+      method: 'POST',
+      headers: getDefaultHeaders(),
+      body: JSON.stringify({ research_project: projectData }),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
+  },
 
-// Projects API
-export const fetchProjects = async () => {
-  try {
-    console.log('Fetching projects...');
-    const response = await axios.get(`${API_URL}/research_projects`);
-    console.log('Projects response:', response.data);
-    return response.data;
-  } catch (error) {
-    return handleError(error);
+  /**
+   * Update an existing project
+   * @param {number} id - Project ID
+   * @param {Object} projectData - Updated project data
+   * @returns {Promise} Promise resolving to updated project
+   */
+  update: (id, projectData) => {
+    return fetch(`/api/research_projects/${id}`, {
+      method: 'PUT',
+      headers: getDefaultHeaders(),
+      body: JSON.stringify({ research_project: projectData }),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
+  },
+
+  /**
+   * Delete a project
+   * @param {number} id - Project ID
+   * @returns {Promise} Promise resolving to success message
+   */
+  delete: (id) => {
+    return fetch(`/api/research_projects/${id}`, {
+      method: 'DELETE',
+      headers: getDefaultHeaders(),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
+  },
+
+  /**
+   * Get metrics for a project
+   * @param {number} projectId - Project ID
+   * @returns {Promise} Promise resolving to array of metrics
+   */
+  getMetrics: (projectId) => {
+    return fetch(`/api/research_projects/${projectId}/metrics`, {
+      headers: getDefaultHeaders(),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
   }
 };
 
-export const fetchProject = async (id) => {
-  try {
-    const response = await axios.get(`${API_URL}/research_projects/${id}`);
-    return response.data;
-  } catch (error) {
-    return handleError(error);
+// API functions for Metrics
+const metricsApi = {
+  /**
+   * Get a specific metric by ID
+   * @param {number} id - Metric ID
+   * @returns {Promise} Promise resolving to metric data
+   */
+  getById: (id) => {
+    return fetch(`/api/metrics/${id}`, {
+      headers: getDefaultHeaders(),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
+  },
+
+  /**
+   * Create a new metric
+   * @param {number} projectId - Project ID
+   * @param {Object} metricData - Metric data
+   * @returns {Promise} Promise resolving to created metric
+   */
+  create: (projectId, metricData) => {
+    return fetch(`/api/research_projects/${projectId}/metrics`, {
+      method: 'POST',
+      headers: getDefaultHeaders(),
+      body: JSON.stringify({ metric: metricData }),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
+  },
+
+  /**
+   * Get notes for a metric
+   * @param {number} metricId - Metric ID
+   * @returns {Promise} Promise resolving to array of notes
+   */
+  getNotes: (metricId) => {
+    return fetch(`/api/metrics/${metricId}/notes`, {
+      headers: getDefaultHeaders(),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
   }
 };
 
-// Metrics API
-export const fetchMetrics = async (projectId) => {
-  try {
-    const response = await axios.get(`${API_URL}/research_projects/${projectId}/metrics`);
-    return response.data;
-  } catch (error) {
-    return handleError(error);
+// API functions for Notes
+const notesApi = {
+  /**
+   * Create a new note
+   * @param {number} metricId - Metric ID
+   * @param {string} content - Note content
+   * @returns {Promise} Promise resolving to created note
+   */
+  create: (metricId, content) => {
+    return fetch('/api/notes', {
+      method: 'POST',
+      headers: getDefaultHeaders(),
+      body: JSON.stringify({
+        note: {
+          metric_id: metricId,
+          content: content
+        }
+      }),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
+  },
+
+  /**
+   * Delete a note
+   * @param {number} noteId - Note ID
+   * @returns {Promise} Promise resolving to success message
+   */
+  delete: (noteId) => {
+    return fetch(`/api/notes/${noteId}`, {
+      method: 'DELETE',
+      headers: getDefaultHeaders(),
+      credentials: 'same-origin'
+    })
+    .then(handleResponse);
   }
 };
 
-// Favorites API
-export const fetchFavorites = async () => {
-  try {
-    const response = await axios.get(`${API_URL}/favorites`);
-    return response.data;
-  } catch (error) {
-    return handleError(error);
-  }
-};
-
-export const toggleFavorite = async (projectId) => {
-  try {
-    // Check if the project is already favorited
-    const favorites = await fetchFavorites();
-    const isFavorited = favorites.some(fav => fav.research_project_id === parseInt(projectId));
-
-    if (isFavorited) {
-      // If already favorited, unfavorite it
-      await axios.delete(`${API_URL}/research_projects/${projectId}/favorite`);
-      return { success: true, message: "Project removed from favorites" };
-    } else {
-      // If not favorited, favorite it
-      const response = await axios.post(`${API_URL}/research_projects/${projectId}/favorite`);
-      return response.data;
-    }
-  } catch (error) {
-    return handleError(error);
-  }
-};
-
-// Notes API
-export const fetchNotes = async (metricId) => {
-  try {
-    const response = await axios.get(`${API_URL}/metrics/${metricId}/notes`);
-    return response.data;
-  } catch (error) {
-    return handleError(error);
-  }
-};
-
-export const createNote = async (metricId, noteData) => {
-  try {
-    const response = await axios.post(`${API_URL}/notes`, {
-      note: {
-        metric_id: metricId,
-        content: noteData.content
-      }
+// API functions for authentication
+const authApi = {
+  /**
+   * Check if user is logged in
+   * @returns {Promise} Promise resolving to authentication status
+   */
+  checkLoggedIn: () => {
+    return fetch('/users/check_logged_in', {
+      headers: getDefaultHeaders(),
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      return {
+        loggedIn: response.ok,
+        status: response.status
+      };
     });
-    return response.data;
-  } catch (error) {
-    return handleError(error);
   }
 };
 
-export const deleteNote = async (noteId) => {
-  try {
-    await axios.delete(`${API_URL}/notes/${noteId}`);
-    return true;
-  } catch (error) {
-    return handleError(error);
-  }
-};
-
-// For CSV export
-export const exportProjectCSV = async (projectId) => {
-  try {
-    window.location.href = `${API_URL}/research_projects/${projectId}/export.csv`;
-    return true;
-  } catch (error) {
-    return handleError(error);
-  }
+// Export all API functions
+export {
+  projectsApi,
+  metricsApi,
+  notesApi,
+  authApi
 };

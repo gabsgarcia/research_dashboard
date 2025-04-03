@@ -4,8 +4,19 @@ class Api::MetricsController < ApplicationController
   before_action :set_metric, only: [:show, :update, :destroy]
 
   def index
-    metrics = @research_project.metrics
-    render json: metrics
+    # Add some debug logging
+    Rails.logger.debug "Fetching metrics for project #{@research_project.id}"
+
+    # Make sure we have a valid research project
+    if @research_project
+      metrics = @research_project.metrics
+      render json: metrics
+    else
+      render json: { error: "Project not found" }, status: :not_found
+    end
+  rescue => e
+    Rails.logger.error "Error in metrics#index: #{e.message}"
+    render json: { error: "An error occurred while fetching metrics" }, status: :internal_server_error
   end
 
   def show
@@ -44,7 +55,9 @@ class Api::MetricsController < ApplicationController
                           current_user.research_projects.find(params[:research_project_id])
                         end
   rescue ActiveRecord::RecordNotFound
+    Rails.logger.error "Project not found: #{params[:research_project_id]}"
     render json: { error: "Project not found or access denied" }, status: :not_found
+    nil
   end
 
   def set_metric

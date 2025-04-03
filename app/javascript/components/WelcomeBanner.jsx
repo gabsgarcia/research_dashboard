@@ -1,7 +1,6 @@
-// app/javascript/components/WelcomeBanner.jsx
 import React from 'react';
 
-const WelcomeBanner = () => {
+const WelcomeBanner = ({ isLoggedIn }) => {
   return (
     <div style={{
       background: 'linear-gradient(135deg, #4a90e2, #8e44ad)',
@@ -12,8 +11,12 @@ const WelcomeBanner = () => {
       marginBottom: '20px',
       boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
     }}>
-      <h2>Welcome to React Dashboard!</h2>
-      <p>This banner is rendered by React</p>
+      <h2>Welcome to Research Dashboard</h2>
+      <p>
+        {isLoggedIn
+          ? 'Track and manage your research projects efficiently.'
+          : 'Please sign in to access the dashboard.'}
+      </p>
     </div>
   );
 };

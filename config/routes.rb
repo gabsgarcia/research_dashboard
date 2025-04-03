@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
+  devise_scope :user do
+    get '/users/check_logged_in', to: 'users/sessions#check_logged_in'
+  end
 
   # API routes
   namespace :api do
@@ -8,7 +14,7 @@ Rails.application.routes.draw do
 
       # Export route
       post 'export', to: 'exports#create'
-      get 'export', to: 'exports#create', on: :member
+      get 'export', to: 'exports#create', on: :member, defaults: { format: 'csv' }
 
       # Favorite routes
       post 'favorite', to: 'favorites#create'
@@ -27,15 +33,12 @@ Rails.application.routes.draw do
     get 'favorites', to: 'research_projects#favorites'
   end
 
-  # Frontend routes - Using DashboardController
+  # Frontend routes
   get 'projects/:id', to: 'dashboard#show', as: 'project'
 
   # Root path
   root 'home#index'
 
-  # Dashboard root
-  get 'dashboard', to: 'dashboard#index'
-
-  # Catch-all for React routing
+  # This should be the last route
   get '*path', to: 'home#index', constraints: ->(request) { !request.xhr? && request.format.html? }
 end

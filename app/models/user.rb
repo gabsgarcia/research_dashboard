@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # Associations
   has_many :research_projects, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_projects, through: :favorites, source: :research_project
   has_many :notes, dependent: :destroy
 
   # Validations
