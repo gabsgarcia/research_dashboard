@@ -8,8 +8,10 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Determine if we're on a project details page
-  const isProjectDetailsPage = window.location.pathname.match(/^\/projects\/\d+$/);
+  // Check if we're on a project details page
+  const projectMatch = window.location.pathname.match(/^\/projects\/(\d+)$/);
+  const isProjectDetailsPage = !!projectMatch;
+  const projectId = projectMatch ? projectMatch[1] : null;
 
   useEffect(() => {
     // Set up CSRF token for axios

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const ProjectDetails = () => {
   const [project, setProject] = useState(null);
+  const [metrics, setMetrics] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -25,9 +26,24 @@ const ProjectDetails = () => {
           axios.defaults.headers.common['X-CSRF-Token'] = token;
         }
 
+        console.log(`Fetching project data for ID: ${projectId}`);
+
         // Fetch project details
-        const response = await axios.get(`/api/research_projects/${projectId}`);
-        setProject(response.data);
+        const projectResponse = await axios.get(`/api/research_projects/${projectId}`);
+        console.log('Project data:', projectResponse.data);
+        setProject(projectResponse.data);
+
+        try {
+          // Fetch metrics for this project in a separate try-catch
+          console.log(`Fetching metrics for project ID: ${projectId}`);
+          const metricsResponse = await axios.get(`/api/research_projects/${projectId}/metrics`);
+          console.log('Metrics data:', metricsResponse.data);
+          setMetrics(metricsResponse.data || []);
+        } catch (metricsError) {
+          console.error('Failed to load metrics:', metricsError);
+          // Don't fail the whole component if metrics fail
+          setMetrics([]);
+        }
       } catch (err) {
         console.error('Failed to load project:', err);
         setError('Failed to load project details. Please try again later.');
@@ -45,13 +61,11 @@ const ProjectDetails = () => {
 
   if (loading) {
     return (
-      <div className="container mt-5">
-        <div className="text-center">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-          <p className="mt-3">Loading project details...</p>
+      <div className="container mt-5 text-center">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
+        <p className="mt-3">Loading project details...</p>
       </div>
     );
   }
@@ -90,7 +104,7 @@ const ProjectDetails = () => {
         &larr; Back to Dashboard
       </button>
 
-      <div className="card">
+      <div className="card mb-4">
         <div className="card-header bg-primary text-white">
           <h2 className="mb-0">{project.title}</h2>
         </div>
@@ -131,6 +145,41 @@ const ProjectDetails = () => {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Metrics Section */}
+      <div className="card">
+        <div className="card-header bg-info text-white">
+          <h3 className="mb-0">Project Metrics</h3>
+        </div>
+        <div className="card-body">
+          {metrics.length === 0 ? (
+            <div className="alert alert-info">No metrics available for this project.</div>
+          ) : (
+            <div className="table-responsive">
+              <table className="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {metrics.map(metric => (
+                    <tr key={metric.id}>
+                      <td>{metric.name}</td>
+                      <td>{metric.value}</td>
+                      <td>{new Date(metric.date).toLocaleDateString()}</td>
+                      <td>{metric.description}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
     </div>

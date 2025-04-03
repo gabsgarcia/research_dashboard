@@ -12,7 +12,11 @@ const WelcomeBanner = ({ isLoggedIn }) => {
       boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
     }}>
       <h2>Welcome to Research Dashboard</h2>
-      <p>{isLoggedIn ? 'Manage your research projects efficiently' : 'Please sign in to access your dashboard'}</p>
+      <p>
+        {isLoggedIn
+          ? 'Track and manage your research projects efficiently.'
+          : 'Please sign in to access the dashboard.'}
+      </p>
     </div>
   );
 };
