@@ -6,7 +6,9 @@ class Api::ExportsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    project = ResearchProject.find(params[:research_project_id])
+    # Find the project id either way that it can come
+    project_id = params[:research_project_id] || params[:id]
+    project = ResearchProject.find(project_id)
 
     # Basic authorization - admins can export any project, researchers only their own
     unless current_user.role == "admin" || project.user_id == current_user.id
