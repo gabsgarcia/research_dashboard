@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import NotesPanel from './NotesPanel';
+import ExportButton from './ExportButton';
 
 const ProjectDetails = () => {
   const [project, setProject] = useState(null);
@@ -8,6 +10,8 @@ const ProjectDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedMetricName, setSelectedMetricName] = useState(null);
+  const [selectedMetricId, setSelectedMetricId] = useState(null);
+  const [notesRefreshTrigger, setNotesRefreshTrigger] = useState(0);
 
   useEffect(() => {
     const fetchProjectData = async () => {
@@ -48,6 +52,16 @@ const ProjectDetails = () => {
             // Get unique metric names
             const uniqueMetricNames = [...new Set(metricsData.map(metric => metric.name))];
             setSelectedMetricName(uniqueMetricNames[0]);
+
+            // Find the most recent metric with this name and set its ID
+            const metricsWithName = metricsData.filter(m => m.name === uniqueMetricNames[0]);
+            if (metricsWithName.length > 0) {
+              // Sort by date descending and take the first one
+              const sortedMetrics = [...metricsWithName].sort((a, b) =>
+                new Date(b.date) - new Date(a.date)
+              );
+              setSelectedMetricId(sortedMetrics[0].id);
+            }
           }
         } catch (metricsError) {
           console.error('Failed to load metrics:', metricsError);
@@ -79,6 +93,29 @@ const ProjectDetails = () => {
         date: new Date(metric.date).toLocaleDateString(),
         value: metric.value,
       }));
+  };
+
+  // Handle metric selection change
+  const handleMetricChange = (e) => {
+    const newSelectedName = e.target.value;
+    setSelectedMetricName(newSelectedName);
+
+    // Find the most recent metric with this name and set its ID
+    const metricsWithName = metrics.filter(m => m.name === newSelectedName);
+    if (metricsWithName.length > 0) {
+      // Sort by date descending and take the first one
+      const sortedMetrics = [...metricsWithName].sort((a, b) =>
+        new Date(b.date) - new Date(a.date)
+      );
+      setSelectedMetricId(sortedMetrics[0].id);
+    } else {
+      setSelectedMetricId(null);
+    }
+  };
+
+  // Trigger a refresh of the notes panel
+  const refreshNotes = () => {
+    setNotesRefreshTrigger(prev => prev + 1);
   };
 
   const handleBackClick = () => {
@@ -137,9 +174,15 @@ const ProjectDetails = () => {
 
   return (
     <div className="container py-4">
-      <button className="btn btn-outline-primary mb-4" onClick={handleBackClick}>
-        &larr; Back to Dashboard
-      </button>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <button className="btn btn-outline-primary" onClick={handleBackClick}>
+          <i className="bi bi-arrow-left me-2"></i>
+          Back to Dashboard
+        </button>
+
+        {/* Add Export Button here */}
+        <ExportButton projectId={project.id} />
+      </div>
 
       <div className="card mb-4">
         <div className="card-header bg-primary text-white">
@@ -150,8 +193,8 @@ const ProjectDetails = () => {
             <h5 className="text-muted">{project.category}</h5>
             <div className="mt-2">
               <span className={`badge bg-${project.status === 'active' ? 'success' :
-                                     project.status === 'completed' ? 'primary' :
-                                     project.status === 'paused' ? 'warning' : 'danger'}`}>
+                                      project.status === 'completed' ? 'primary' :
+                                      project.status === 'paused' ? 'warning' : 'danger'}`}>
                 {project.status}
               </span>
             </div>
@@ -198,7 +241,7 @@ const ProjectDetails = () => {
                 id="metricSelector"
                 className="form-select"
                 value={selectedMetricName || ''}
-                onChange={(e) => setSelectedMetricName(e.target.value)}
+                onChange={handleMetricChange}
               >
                 {uniqueMetricNames.map(name => (
                   <option key={name} value={name}>{name}</option>
@@ -233,6 +276,13 @@ const ProjectDetails = () => {
                 No data available for {selectedMetricName}
               </div>
             )}
+
+            {/* Add Notes Panel here */}
+            <NotesPanel
+              metricId={selectedMetricId}
+              refreshTrigger={notesRefreshTrigger}
+              onRefreshNeeded={refreshNotes}
+            />
           </div>
         </div>
       )}
@@ -257,6 +307,7 @@ const ProjectDetails = () => {
                           <th>Date</th>
                           <th>Value</th>
                           <th>Description</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -265,6 +316,23 @@ const ProjectDetails = () => {
                             <td>{new Date(metric.date).toLocaleDateString()}</td>
                             <td>{metric.value}</td>
                             <td>{metric.description}</td>
+                            <td>
+                              <button
+                                className="btn btn-sm btn-outline-primary"
+                                onClick={() => {
+                                  setSelectedMetricId(metric.id);
+                                  setSelectedMetricName(metric.name);
+                                  // Scroll to the notes panel
+                                  document.getElementById('metricSelector').scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                  });
+                                }}
+                              >
+                                <i className="bi bi-sticky me-1"></i>
+                                View Notes
+                              </button>
+                            </td>
                           </tr>
                         ))}
                       </tbody>
