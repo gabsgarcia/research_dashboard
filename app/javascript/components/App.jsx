@@ -46,8 +46,8 @@ const App = () => {
       <div className="container mt-4">
         <WelcomeBanner isLoggedIn={false} />
         <div className="text-center mt-5">
-          <h2>Welcome to Research Dashboard</h2>
-          <p>Please sign in to access your research projects.</p>
+          <h2>Dashboard with data</h2>
+          <p>The application that will help you create and visualize your research projects.</p>
           <a href="/users/sign_in" className="btn btn-primary">Sign In</a>
         </div>
       </div>

@@ -10699,3 +10699,1102 @@ Processing by Api::ResearchProjectsController#index as HTML
 Completed 200 OK in 21ms (Views: 1.1ms | ActiveRecord: 0.5ms | Allocations: 2595)
 
 
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:01:30 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 187)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 1968.9ms | Allocations: 161867)
+Completed 200 OK in 2321ms (Views: 2288.9ms | ActiveRecord: 19.9ms | Allocations: 447715)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:01:33 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1881)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:01:33 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:01:33 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (1.2ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Processing by Api::FavoritesController#index as HTML
+Completed 200 OK in 54ms (Views: 1.2ms | ActiveRecord: 8.2ms | Allocations: 15774)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 65ms (Views: 17.3ms | ActiveRecord: 23.0ms | Allocations: 20845)
+
+
+Started GET "/projects/22" for 127.0.0.1 at 2025-04-03 00:01:37 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 112)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2322)
+Completed 200 OK in 14ms (Views: 7.1ms | ActiveRecord: 0.6ms | Allocations: 4664)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:01:38 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 0.9ms | Allocations: 1201)
+
+
+Started GET "/api/research_projects/22" for 127.0.0.1 at 2025-04-03 00:01:38 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 2973)
+
+
+Started GET "/api/research_projects/22/metrics" for 127.0.0.1 at 2025-04-03 00:01:38 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"22"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 22
+  [1m[36mMetric Load (0.7ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 22]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 129ms (Views: 109.9ms | ActiveRecord: 6.7ms | Allocations: 25961)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:02:17 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 50.3ms | Allocations: 3373)
+Completed 200 OK in 52ms (Views: 51.0ms | ActiveRecord: 0.5ms | Allocations: 3614)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:02:17 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1181)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:02:17 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:02:17 -0300
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 3.1ms | ActiveRecord: 1.2ms | Allocations: 2495)
+
+
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 0.7ms | Allocations: 2583)
+
+
+Started GET "/projects/19" for 127.0.0.1 at 2025-04-03 00:02:21 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2040)
+Completed 200 OK in 14ms (Views: 5.9ms | ActiveRecord: 0.4ms | Allocations: 3738)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:02:21 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1187)
+
+
+Started GET "/api/research_projects/19" for 127.0.0.1 at 2025-04-03 00:02:21 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 2251)
+
+
+Started GET "/api/research_projects/19/metrics" for 127.0.0.1 at 2025-04-03 00:02:21 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 19
+  [1m[36mMetric Load (0.4ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 19]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 21ms (Views: 14.6ms | ActiveRecord: 1.0ms | Allocations: 9452)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:02:41 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 3113)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.3ms | Allocations: 3317)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:02:41 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 1199)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:02:41 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:02:41 -0300
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mFavorite Load (1.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 4.1ms | ActiveRecord: 2.1ms | Allocations: 3197)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 12ms (Views: 1.0ms | ActiveRecord: 1.6ms | Allocations: 3544)
+
+
+Started GET "/projects/20" for 127.0.0.1 at 2025-04-03 00:02:43 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2035)
+Completed 200 OK in 11ms (Views: 6.2ms | ActiveRecord: 0.5ms | Allocations: 3731)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:02:43 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 1178)
+
+
+Started GET "/api/research_projects/20" for 127.0.0.1 at 2025-04-03 00:02:43 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 2235)
+
+
+Started GET "/api/research_projects/20/metrics" for 127.0.0.1 at 2025-04-03 00:02:43 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"20"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 20
+  [1m[36mMetric Load (1.1ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 20]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 65ms (Views: 56.4ms | ActiveRecord: 1.7ms | Allocations: 31932)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:02:53 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 3102)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.4ms | Allocations: 3312)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:02:53 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1190)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:02:53 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:02:53 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mResearchProject Load (2.2ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 14ms (Views: 1.1ms | ActiveRecord: 2.6ms | Allocations: 3411)
+
+
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 2.6ms | ActiveRecord: 2.7ms | Allocations: 3741)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:03:09 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3091)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.3ms | Allocations: 3295)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:03:09 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1178)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:03:09 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:03:09 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 1.1ms | Allocations: 2643)
+
+
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 2445)
+
+
+Started GET "/projects/22" for 127.0.0.1 at 2025-04-03 00:03:11 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 2035)
+Completed 200 OK in 9ms (Views: 4.5ms | ActiveRecord: 0.3ms | Allocations: 3734)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:03:11 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1190)
+
+
+Started GET "/api/research_projects/22" for 127.0.0.1 at 2025-04-03 00:03:11 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 2223)
+
+
+Started GET "/api/research_projects/22/metrics" for 127.0.0.1 at 2025-04-03 00:03:11 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 22
+  [1m[36mMetric Load (1.0ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 22]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 54ms (Views: 41.8ms | ActiveRecord: 1.7ms | Allocations: 17305)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:03:15 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 3105)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.3ms | Allocations: 3310)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:03:15 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1185)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:03:15 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:03:15 -0300
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (1.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 3.0ms | ActiveRecord: 1.8ms | Allocations: 2599)
+
+
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 2580)
+
+
+Started GET "/projects/21" for 127.0.0.1 at 2025-04-03 00:03:16 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2040)
+Completed 200 OK in 12ms (Views: 5.0ms | ActiveRecord: 0.3ms | Allocations: 3745)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:03:17 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1193)
+
+
+Started GET "/api/research_projects/21" for 127.0.0.1 at 2025-04-03 00:03:17 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 2245)
+
+
+Started GET "/api/research_projects/21/metrics" for 127.0.0.1 at 2025-04-03 00:03:17 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"21"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.2ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 21
+  [1m[36mMetric Load (0.8ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 21]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 19ms (Views: 12.1ms | ActiveRecord: 1.1ms | Allocations: 8504)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:03:28 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 21.7ms | Allocations: 3113)
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.4ms | Allocations: 3317)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:03:28 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 1178)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:03:28 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:03:28 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.9ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 9ms (Views: 0.8ms | ActiveRecord: 1.2ms | Allocations: 2640)
+
+
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 2.5ms | ActiveRecord: 0.6ms | Allocations: 2414)
+
+
+Started GET "/projects/22" for 127.0.0.1 at 2025-04-03 00:03:32 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 2035)
+Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 0.3ms | Allocations: 3719)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:03:33 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1163)
+
+
+Started GET "/api/research_projects/22" for 127.0.0.1 at 2025-04-03 00:03:33 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.2ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 2226)
+
+
+Started GET "/api/research_projects/22/metrics" for 127.0.0.1 at 2025-04-03 00:03:33 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"22"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.5ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 22
+  [1m[36mMetric Load (0.8ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 22]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 39ms (Views: 28.3ms | ActiveRecord: 1.5ms | Allocations: 17299)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:03:39 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 3103)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.3ms | Allocations: 3307)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:03:39 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1172)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:03:39 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:03:39 -0300
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mFavorite Load (1.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Completed 200 OK in 10ms (Views: 2.9ms | ActiveRecord: 2.0ms | Allocations: 3248)
+
+
+  [1m[36mResearchProject Load (1.8ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 12ms (Views: 1.2ms | ActiveRecord: 2.7ms | Allocations: 3602)
+
+
+Started POST "/api/research_projects/19/favorite" for 127.0.0.1 at 2025-04-03 00:03:43 -0300
+Processing by Api::FavoritesController#create as HTML
+  Parameters: {"research_project_id"=>"19"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mFavorite Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."user_id" = $1 AND "favorites"."research_project_id" = $2 LIMIT $3[0m  [["user_id", 40], ["research_project_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mFavorite Create (0.9ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "research_project_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 40], ["research_project_id", 19], ["created_at", "2025-04-03 03:03:43.035217"], ["updated_at", "2025-04-03 03:03:43.035217"]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+Completed 200 OK in 24ms (Views: 0.3ms | ActiveRecord: 5.2ms | Allocations: 8817)
+
+
+Started DELETE "/api/research_projects/19/favorite" for 127.0.0.1 at 2025-04-03 00:03:46 -0300
+Processing by Api::FavoritesController#destroy as HTML
+  Parameters: {"research_project_id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1 AND "favorites"."research_project_id" = $2 LIMIT $3[0m  [["user_id", 40], ["research_project_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/favorites_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/favorites_controller.rb:30:in `destroy'
+  [1m[36mFavorite Destroy (2.5ms)[0m  [1m[31mDELETE FROM "favorites" WHERE "favorites"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/api/favorites_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/favorites_controller.rb:30:in `destroy'
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 5.0ms | Allocations: 4258)
+
+
+Started POST "/api/research_projects/19/favorite" for 127.0.0.1 at 2025-04-03 00:03:48 -0300
+Processing by Api::FavoritesController#create as HTML
+  Parameters: {"research_project_id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mFavorite Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."user_id" = $1 AND "favorites"."research_project_id" = $2 LIMIT $3[0m  [["user_id", 40], ["research_project_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mFavorite Create (0.6ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "research_project_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 40], ["research_project_id", 19], ["created_at", "2025-04-03 03:03:48.796082"], ["updated_at", "2025-04-03 03:03:48.796082"]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 9.9ms | Allocations: 5620)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2025-04-03 00:04:10 -0300
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 20ms (ActiveRecord: 0.4ms | Allocations: 3117)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:04:10 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 2517)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 2768)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:04:10 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 409)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-04-03 00:04:12 -0300
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.4ms | Allocations: 616)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 15.0ms | Allocations: 3529)
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 5702)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.0ms | Allocations: 7182)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-04-03 00:04:16 -0300
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"climate@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 330ms (ActiveRecord: 0.4ms | Allocations: 6797)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:04:16 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 12)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 3466)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.3ms | Allocations: 3726)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:04:16 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 17ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 1189)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:04:16 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:04:16 -0300
+Processing by Api::FavoritesController#index as HTML
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mFavorite Load (4.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 41]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+  [1m[36mResearchProject Load (1.0ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 41]]
+Completed 200 OK in 18ms (Views: 4.3ms | ActiveRecord: 6.2ms | Allocations: 5574)
+
+
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 20ms (Views: 0.8ms | ActiveRecord: 1.7ms | Allocations: 6304)
+
+
+Started POST "/api/research_projects/18/favorite" for 127.0.0.1 at 2025-04-03 00:04:20 -0300
+Processing by Api::FavoritesController#create as HTML
+  Parameters: {"research_project_id"=>"18"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mFavorite Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "favorites" WHERE "favorites"."user_id" = $1 AND "favorites"."research_project_id" = $2 LIMIT $3[0m  [["user_id", 41], ["research_project_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mFavorite Create (0.9ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "research_project_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 41], ["research_project_id", 18], ["created_at", "2025-04-03 03:04:20.739825"], ["updated_at", "2025-04-03 03:04:20.739825"]]
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/favorites_controller.rb:18:in `create'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 3.8ms | Allocations: 5721)
+
+
+Started DELETE "/api/research_projects/18/favorite" for 127.0.0.1 at 2025-04-03 00:04:22 -0300
+Processing by Api::FavoritesController#destroy as HTML
+  Parameters: {"research_project_id"=>"18"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1 AND "favorites"."research_project_id" = $2 LIMIT $3[0m  [["user_id", 41], ["research_project_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/favorites_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/favorites_controller.rb:30:in `destroy'
+  [1m[36mFavorite Destroy (1.8ms)[0m  [1m[31mDELETE FROM "favorites" WHERE "favorites"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/api/favorites_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/favorites_controller.rb:30:in `destroy'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 9.8ms | Allocations: 4087)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2025-04-03 00:04:25 -0300
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 6ms (ActiveRecord: 0.3ms | Allocations: 1973)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:04:25 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 2231)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 2435)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:04:25 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+Completed 401 Unauthorized in 5ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 390)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:04:27 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2194)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 2398)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:04:28 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 390)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-04-03 00:05:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 620)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 14.6ms | Allocations: 3969)
+  Rendered layout layouts/application.html.erb (Duration: 157.6ms | Allocations: 30083)
+Completed 200 OK in 548ms (Views: 487.2ms | ActiveRecord: 14.3ms | Allocations: 328267)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-04-03 00:05:23 -0300
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"climate@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 330ms (ActiveRecord: 0.9ms | Allocations: 7768)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:05:23 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 119)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 3804)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.5ms | Allocations: 4550)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:05:23 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 1215)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:05:24 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:05:24 -0300
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mFavorite Load (0.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 41]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+Completed 200 OK in 67ms (Views: 36.4ms | ActiveRecord: 7.1ms | Allocations: 18465)
+
+
+  [1m[36mResearchProject Load (0.6ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 41]]
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 82ms (Views: 0.7ms | ActiveRecord: 26.1ms | Allocations: 23049)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2025-04-03 00:05:39 -0300
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 16ms (ActiveRecord: 0.4ms | Allocations: 2993)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:05:39 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 2447)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 2699)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:05:39 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+Completed 401 Unauthorized in 4ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 391)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:08:57 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 3359.1ms | Allocations: 147302)
+Completed 200 OK in 4249ms (Views: 4239.9ms | ActiveRecord: 0.0ms | Allocations: 433141)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:09:02 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+Completed 401 Unauthorized in 5ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1103)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-04-03 00:09:11 -0300
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.8ms | Allocations: 615)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 37.5ms | Allocations: 3782)
+  Rendered layout layouts/application.html.erb (Duration: 44.7ms | Allocations: 5959)
+Completed 200 OK in 115ms (Views: 48.1ms | ActiveRecord: 18.7ms | Allocations: 18457)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-04-03 00:09:13 -0300
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"climate@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "climate@example.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 400ms (ActiveRecord: 1.0ms | Allocations: 7759)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:09:14 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3535)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.3ms | Allocations: 3794)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:09:14 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1186)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:09:14 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:09:14 -0300
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 41]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 66ms (Views: 25.0ms | ActiveRecord: 10.9ms | Allocations: 20464)
+
+
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."user_id" = $1[0m  [["user_id", 41]]
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 90ms (Views: 0.6ms | ActiveRecord: 34.6ms | Allocations: 26174)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2025-04-03 00:09:19 -0300
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 19ms (ActiveRecord: 0.5ms | Allocations: 2992)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:09:19 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 2449)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 2701)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:09:19 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+Completed 401 Unauthorized in 7ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 389)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-04-03 00:09:21 -0300
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 11.8ms | Allocations: 966)
+  Rendered layout layouts/application.html.erb (Duration: 27.2ms | Allocations: 2928)
+Completed 200 OK in 37ms (Views: 28.8ms | ActiveRecord: 0.0ms | Allocations: 3620)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-04-03 00:09:24 -0300
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 331ms (ActiveRecord: 0.7ms | Allocations: 2726)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:09:24 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 60.8ms | Allocations: 3111)
+Completed 200 OK in 62ms (Views: 61.5ms | ActiveRecord: 0.3ms | Allocations: 3316)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:09:25 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1163)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:09:25 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:09:25 -0300
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+  [1m[36mResearchProject Load (1.7ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+Completed 200 OK in 21ms (Views: 9.5ms | ActiveRecord: 1.6ms | Allocations: 4581)
+
+
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 17ms (Views: 1.9ms | ActiveRecord: 2.0ms | Allocations: 3791)
+
+
+Started GET "/projects/20" for 127.0.0.1 at 2025-04-03 00:09:30 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 108)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 2314)
+Completed 200 OK in 17ms (Views: 10.6ms | ActiveRecord: 0.4ms | Allocations: 4642)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:09:30 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1189)
+
+
+Started GET "/api/research_projects/20" for 127.0.0.1 at 2025-04-03 00:09:30 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 2922)
+
+
+Started GET "/api/research_projects/20/metrics" for 127.0.0.1 at 2025-04-03 00:09:30 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"20"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.4ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 20
+  [1m[36mMetric Load (2.3ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 20]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 92ms (Views: 71.3ms | ActiveRecord: 7.6ms | Allocations: 40540)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:09:45 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 3358)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.5ms | Allocations: 3593)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:09:45 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 12ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1205)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:09:45 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:09:45 -0300
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mFavorite Load (1.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 3.2ms | ActiveRecord: 2.5ms | Allocations: 3308)
+
+
+  [1m[36mResearchProject Load (1.2ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 11ms (Views: 1.8ms | ActiveRecord: 2.3ms | Allocations: 3687)
+
+
+Started GET "/projects/22" for 127.0.0.1 at 2025-04-03 00:12:23 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2035)
+Completed 200 OK in 11ms (Views: 5.2ms | ActiveRecord: 0.4ms | Allocations: 3720)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:12:23 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1184)
+
+
+Started GET "/api/research_projects/22" for 127.0.0.1 at 2025-04-03 00:12:23 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 2250)
+
+
+Started GET "/api/research_projects/22/metrics" for 127.0.0.1 at 2025-04-03 00:12:23 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"22"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 22
+  [1m[36mMetric Load (0.8ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 22]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 39ms (Views: 31.9ms | ActiveRecord: 1.5ms | Allocations: 17357)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-03 00:12:35 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:38
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 3125)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.3ms | Allocations: 3330)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:12:35 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1196)
+
+
+Started GET "/api/research_projects" for 127.0.0.1 at 2025-04-03 00:12:35 -0300
+Started GET "/api/favorites" for 127.0.0.1 at 2025-04-03 00:12:35 -0300
+Processing by Api::ResearchProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.9ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects"[0m
+  ↳ app/controllers/api/research_projects_controller.rb:17:in `index'
+Completed 200 OK in 19ms (Views: 1.4ms | ActiveRecord: 1.1ms | Allocations: 2660)
+
+
+Processing by Api::FavoritesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = $1[0m  [["user_id", 40]]
+  ↳ app/controllers/api/favorites_controller.rb:8:in `index'
+Completed 200 OK in 33ms (Views: 14.2ms | ActiveRecord: 0.8ms | Allocations: 2498)
+
+
+Started GET "/projects/22" for 127.0.0.1 at 2025-04-03 00:12:58 -0300
+Processing by DashboardController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 2035)
+Completed 200 OK in 15ms (Views: 10.0ms | ActiveRecord: 0.3ms | Allocations: 3740)
+
+
+Started GET "/users/check_logged_in" for 127.0.0.1 at 2025-04-03 00:12:58 -0300
+Processing by Users::SessionsController#check_logged_in as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:20:in `check_logged_in'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1160)
+
+
+Started GET "/api/research_projects/22" for 127.0.0.1 at 2025-04-03 00:12:58 -0300
+Processing by Api::ResearchProjectsController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.3ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/research_projects_controller.rb:60:in `set_research_project'
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 2232)
+
+
+Started GET "/api/research_projects/22/metrics" for 127.0.0.1 at 2025-04-03 00:12:58 -0300
+Processing by Api::MetricsController#index as HTML
+  Parameters: {"research_project_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mResearchProject Load (0.5ms)[0m  [1m[34mSELECT "research_projects".* FROM "research_projects" WHERE "research_projects"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/metrics_controller.rb:53:in `set_research_project'
+Fetching metrics for project 22
+  [1m[36mMetric Load (0.8ms)[0m  [1m[34mSELECT "metrics".* FROM "metrics" WHERE "metrics"."research_project_id" = $1[0m  [["research_project_id", 22]]
+  ↳ app/controllers/api/metrics_controller.rb:13:in `index'
+Completed 200 OK in 39ms (Views: 28.9ms | ActiveRecord: 1.5ms | Allocations: 17287)
+
+
